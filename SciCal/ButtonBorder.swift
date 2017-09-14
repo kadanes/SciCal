@@ -20,7 +20,7 @@ extension UIButton {
             if border {
                 self.backgroundColor = .clear
                 self.layer.cornerRadius = 0
-                self.layer.borderWidth = 0
+                self.layer.borderWidth = 1
                 self.layer.borderColor = UIColor.gray.cgColor
             }
         }

@@ -22,10 +22,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func addToMemory(_ sender: UIButton) {
     }
     
+    @IBOutlet weak var baseChoiceButtons: UIStackView!
+    
+    @IBOutlet weak var decimalModeBtn: UIButton!
+    
+    @IBOutlet weak var binaryModeBtn: UIButton!
+    
+    @IBOutlet weak var hexModeBtn: UIButton!
+    
+    
     var operationFlag: Bool = false
     var decimalFlag: Bool = false
     var openingBracketFlag: Bool = false
     var closingBracketFlag: Bool = false
+    var baseValue = 10
     
     @IBAction func pressedA(_ sender: Any) {
         updateMainScreen(input: "A")
@@ -157,12 +167,119 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             permutationRow.isHidden = false
             alphabetRow.isHidden = true
+            baseChoiceButtons.isHidden = true
         } else if sender.selectedSegmentIndex == 1 {
             permutationRow.isHidden = true
             alphabetRow.isHidden = false
+            baseChoiceButtons.isHidden = false
         }
         
     }
+    
+    @IBAction func convertToDecimal(_ sender: UIButton) {
+        
+        
+        let inputSplit = mainScreen.text?.components(separatedBy: ".")
+    
+        
+        var fractionalInputString: String
+        
+        if ( inputSplit?.count == 2){
+            
+          fractionalInputString = (inputSplit?[1])!
+            
+        } else {
+            
+           fractionalInputString = "0"
+            
+        }
+        
+        var integerInputString: String
+
+        if (inputSplit?.count)! > 0 {
+            
+            integerInputString = (inputSplit?[0])!
+            
+        } else {
+            
+            integerInputString = "0"
+            
+        }
+        
+        //var intInput = Double(integerInputString)
+        
+        var outputInt = 0.0
+        var outputFraction = 0.0
+        var multiplier = 1.0
+        let output: Double
+        
+        switch baseValue {
+        case 2:
+
+            let countInt = integerInputString.characters.count
+            
+            var ctrInt = Int(countInt) - 1
+            
+            print("Count: \(ctrInt)")
+            while ctrInt >= 0 {
+                let index = integerInputString.characters.index((integerInputString.startIndex), offsetBy: ctrInt)
+                let integerBit = Double(String(integerInputString[index]))
+                
+                outputInt += integerBit! * multiplier
+                multiplier *= 2
+                ctrInt -= 1
+            }
+            
+//            while intInput != 0 {
+//                
+//                
+//                let temp = intInput!.truncatingRemainder(dividingBy: 10.0)
+//                outputInt += temp * multiplier
+//                multiplier *= 2
+//                intInput! = Double(Int(intInput! / 10))
+//                print("\(intInput!)")
+//            }
+            
+            multiplier = 1/2
+            
+            let countFraction = fractionalInputString.characters.count
+            var ctrFraction = 0
+            while ctrFraction != countFraction {
+                let index = fractionalInputString.characters.index((fractionalInputString.startIndex), offsetBy: ctrFraction)
+                
+                let fractionBit = Double(String(fractionalInputString[index]))
+                print(fractionBit!)
+                outputFraction += fractionBit! * multiplier
+                multiplier = multiplier/2
+                
+                ctrFraction += 1
+            }
+            
+            output = outputInt + outputFraction
+            mainScreen.text = "\(output)"
+            updateCursor()
+            
+        case 16:
+            print("Convert from hex")
+        default:
+            print("Already decimal")
+        }
+        
+        baseValue = 10
+        
+    }
+    
+    @IBAction func convertToBinary(_ sender: UIButton) {
+        
+        baseValue = 2
+    }
+    
+    @IBAction func convertToHex(_ sender: UIButton) {
+        
+        baseValue = 16
+    }
+    
+    
     
     @IBAction func deleteText(_ sender: Any) {
         
@@ -172,13 +289,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 if let newPosition = mainScreen.position(from: range.start, offset: -1) {
                     
                     // set the new position
-                    mainScreen.selectedTextRange = mainScreen.textRange(from: newPosition, to: newPosition)
+                    mainScreen.selectedTextRange = mainScreen.textRange(from: newPosition, to: range.start)
+                    if let updatedRange = mainScreen.selectedTextRange {
+                        mainScreen.replace(updatedRange, withText: "")
+                    }
+                    
+                    updateCursor()
                     
                 }
             }
         }
     }
-    
     
     @IBAction func changeCursorPosition(_ sender: Any) {
         
@@ -187,8 +308,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let position = mainScreen.position(from: mainScreen.beginningOfDocument, offset: cursorPosition)!
         mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
         
+        
     }
-   
     
     func updateMainScreen( input: String){
         
@@ -200,7 +321,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         updateCursor()
         
         }
-    
     
     func updateCursor(){
         
@@ -217,6 +337,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+    
+    
+    
 
 }
 
