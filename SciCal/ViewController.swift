@@ -216,6 +216,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         switch baseValue {
         case 2:
 
+            changeBaseBtnBg(base: 2, newBase: 10)
+            
             let countInt = integerInputString.characters.count
             
             var ctrInt = Int(countInt) - 1
@@ -230,17 +232,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 ctrInt -= 1
             }
             
-//            while intInput != 0 {
-//                
-//                
-//                let temp = intInput!.truncatingRemainder(dividingBy: 10.0)
-//                outputInt += temp * multiplier
-//                multiplier *= 2
-//                intInput! = Double(Int(intInput! / 10))
-//                print("\(intInput!)")
-//            }
-            
-            multiplier = 1/2
+            multiplier = 1 / Double(baseValue)
             
             let countFraction = fractionalInputString.characters.count
             var ctrFraction = 0
@@ -260,7 +252,36 @@ class ViewController: UIViewController, UITextFieldDelegate {
             updateCursor()
             
         case 16:
-            print("Convert from hex")
+            
+            changeBaseBtnBg(base: 16, newBase: 10)
+            
+            print(integerInputString)
+            outputInt = Double(Int(integerInputString, radix: 16)!)
+            
+            multiplier = 1 / Double(baseValue)
+            
+            let countFraction = fractionalInputString.characters.count
+            var ctrFraction = 0
+            while ctrFraction != countFraction {
+                let index = fractionalInputString.characters.index((fractionalInputString.startIndex), offsetBy: ctrFraction)
+                
+                let fractionBit = hexToIntVal(digit: String(fractionalInputString[index]))
+                print(fractionBit)
+                outputFraction += Double(fractionBit) * multiplier
+                multiplier = multiplier / Double(baseValue)
+                
+                ctrFraction += 1
+            }
+            
+            if (outputFraction == 0.0) {
+                output = outputInt
+            } else {
+                output = outputInt + outputFraction
+            }
+            
+            mainScreen.text = "\(output)"
+            updateCursor()
+            
         default:
             print("Already decimal")
         }
@@ -271,10 +292,77 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func convertToBinary(_ sender: UIButton) {
         
+        let input = mainScreen.text
+        let inputSplit = input?.components(separatedBy: ".")
+        var inputInt: String = "0"
+        var inputFrac: String = "0"
+        var output: String = "0.0"
+        var outputInt: Int = 0
+        var outputFrac: Double = 0.0
+        
+        if (inputSplit?.count)! > 0 {
+            inputInt = (inputSplit?[0])!
+            
+            if (inputSplit?.count)! > 1 {
+                inputFrac = (inputSplit?[1])!
+            }
+        }
+        
+        switch baseValue {
+        case 10:
+            changeBaseBtnBg(base: 10, newBase: 2)
+       
+            outputInt = Int(String(Int(inputInt)!, radix: 2))!
+            
+            inputFrac = ".\(inputFrac)"
+         
+            for _ in stride(from: 1, to: 10, by: 1){
+                
+                var inputFracInDouble = Double(inputFrac)
+                inputFracInDouble = inputFracInDouble! * 2.0
+                
+                let inputFracSplit = String(inputFracInDouble!).components(separatedBy: "." )
+    
+                inputFrac = ".\(inputFracSplit[1])"
+               
+                outputFrac += Double(Int(inputFracSplit[0])!)
+                outputFrac *= 10
+                
+            }
+
+            outputFrac = Double(".\(Int(outputFrac))")!
+            
+        case 16:
+            
+            print(inputInt)
+            let outputIntInDecimal = Int(inputInt, radix:16)!
+            outputInt = Int(String(outputIntInDecimal, radix: 2))!
+    
+            changeBaseBtnBg(base: 16, newBase: 2)
+        default: break
+        }
+        
+        if inputFrac == "0" {
+            print("Here")
+            output = String(outputInt)
+        } else {
+            output = "\(Double(outputInt) + outputFrac)"
+        }
+        
+        mainScreen.text = "\(output)"
+        updateCursor()
         baseValue = 2
     }
     
     @IBAction func convertToHex(_ sender: UIButton) {
+        
+        switch baseValue {
+        case 2:
+            changeBaseBtnBg(base: 2, newBase: 16)
+        case 10:
+            changeBaseBtnBg(base: 10, newBase: 16)
+        default: break
+        }
         
         baseValue = 16
     }
@@ -339,6 +427,64 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    func hexToIntVal(digit: String) -> Int {
+        if digit == "A" {
+            return 10
+        } else if digit == "B" {
+            return 11
+        } else if digit == "C" {
+            return 12
+        } else if digit == "D" {
+            return 13
+        } else if digit == "E" {
+            return 14
+        } else if digit == "F" {
+            return 15
+        } else {
+            return Int(digit)!
+        }
+    }
+    
+    func changeBaseBtnBg( base: Int, newBase: Int) {
+        
+        switch base {
+            
+        case 10:
+             decimalModeBtn.backgroundColor = .clear
+             
+            if newBase == 2 {
+               
+                binaryModeBtn.backgroundColor = UIColor.darkGray
+            } else if newBase == 16 {
+               
+                hexModeBtn.backgroundColor = UIColor.darkGray
+            }
+    
+        case 2:
+            binaryModeBtn.backgroundColor = .clear
+
+            if newBase == 10 {
+                
+                decimalModeBtn.backgroundColor = UIColor.darkGray
+            } else if newBase == 16 {
+                
+                hexModeBtn.backgroundColor = UIColor.darkGray
+            }
+            
+        case 16:
+            hexModeBtn.backgroundColor = .clear
+            
+            if newBase == 10 {
+                
+                decimalModeBtn.backgroundColor = UIColor.darkGray
+            } else if newBase == 2 {
+                
+                binaryModeBtn.backgroundColor = UIColor.darkGray
+            }
+        default: break
+            
+        }
+    }
     
 
 }
