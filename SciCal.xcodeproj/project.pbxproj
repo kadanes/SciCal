@@ -14,6 +14,7 @@
 		B23465341F69581200486FE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23465321F69581200486FE7 /* LaunchScreen.storyboard */; };
 		B234653F1F69581200486FE7 /* SciCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B234653E1F69581200486FE7 /* SciCalTests.swift */; };
 		B234654D1F6997F800486FE7 /* ButtonBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B234654C1F6997F800486FE7 /* ButtonBorder.swift */; };
+		B292B9351F700DE200ED8EFA /* BaseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292B9341F700DE200ED8EFA /* BaseConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		B234653E1F69581200486FE7 /* SciCalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SciCalTests.swift; sourceTree = "<group>"; };
 		B23465401F69581200486FE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B234654C1F6997F800486FE7 /* ButtonBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBorder.swift; sourceTree = "<group>"; };
+		B292B9341F700DE200ED8EFA /* BaseConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		B23465281F69581200486FE7 /* SciCal */ = {
 			isa = PBXGroup;
 			children = (
+				B292B9331F700DC700ED8EFA /* Util */,
 				B23465491F698AFC00486FE7 /* View */,
 				B23465291F69581200486FE7 /* AppDelegate.swift */,
 				B234652B1F69581200486FE7 /* ViewController.swift */,
@@ -105,6 +108,14 @@
 				B234654C1F6997F800486FE7 /* ButtonBorder.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		B292B9331F700DC700ED8EFA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B292B9341F700DE200ED8EFA /* BaseConverter.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B234652C1F69581200486FE7 /* ViewController.swift in Sources */,
+				B292B9351F700DE200ED8EFA /* BaseConverter.swift in Sources */,
 				B234654D1F6997F800486FE7 /* ButtonBorder.swift in Sources */,
 				B234652A1F69581200486FE7 /* AppDelegate.swift in Sources */,
 			);
@@ -428,6 +440,7 @@
 				B23465451F69581200486FE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B23465461F69581200486FE7 /* Build configuration list for PBXNativeTarget "SciCalTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +449,7 @@
 				B23465481F69581200486FE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

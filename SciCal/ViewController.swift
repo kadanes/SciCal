@@ -37,6 +37,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var closingBracketFlag: Bool = false
     var baseValue = 10
     
+    let converter = BaseConverter()
+    
     @IBAction func pressedA(_ sender: Any) {
         updateMainScreen(input: "A")
     }
@@ -178,192 +180,60 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func convertToDecimal(_ sender: UIButton) {
         
-        
-        let inputSplit = mainScreen.text?.components(separatedBy: ".")
-    
-        
-        var fractionalInputString: String
-        
-        if ( inputSplit?.count == 2){
-            
-          fractionalInputString = (inputSplit?[1])!
-            
-        } else {
-            
-           fractionalInputString = "0"
-            
-        }
-        
-        var integerInputString: String
-
-        if (inputSplit?.count)! > 0 {
-            
-            integerInputString = (inputSplit?[0])!
-            
-        } else {
-            
-            integerInputString = "0"
-            
-        }
-        
-        //var intInput = Double(integerInputString)
-        
-        var outputInt = 0.0
-        var outputFraction = 0.0
-        var multiplier = 1.0
-        let output: Double
-        
         switch baseValue {
         case 2:
-
+            
             changeBaseBtnBg(base: 2, newBase: 10)
-            
-            let countInt = integerInputString.characters.count
-            
-            var ctrInt = Int(countInt) - 1
-            
-            print("Count: \(ctrInt)")
-            while ctrInt >= 0 {
-                let index = integerInputString.characters.index((integerInputString.startIndex), offsetBy: ctrInt)
-                let integerBit = Double(String(integerInputString[index]))
-                
-                outputInt += integerBit! * multiplier
-                multiplier *= 2
-                ctrInt -= 1
-            }
-            
-            multiplier = 1 / Double(baseValue)
-            
-            let countFraction = fractionalInputString.characters.count
-            var ctrFraction = 0
-            while ctrFraction != countFraction {
-                let index = fractionalInputString.characters.index((fractionalInputString.startIndex), offsetBy: ctrFraction)
-                
-                let fractionBit = Double(String(fractionalInputString[index]))
-                print(fractionBit!)
-                outputFraction += fractionBit! * multiplier
-                multiplier = multiplier/2
-                
-                ctrFraction += 1
-            }
-            
-            output = outputInt + outputFraction
-            mainScreen.text = "\(output)"
-            updateCursor()
-            
+            mainScreen.text = converter.converBinaryToDecimal(input: mainScreen.text!)
+           
         case 16:
-            
+    
             changeBaseBtnBg(base: 16, newBase: 10)
-            
-            print(integerInputString)
-            outputInt = Double(Int(integerInputString, radix: 16)!)
-            
-            multiplier = 1 / Double(baseValue)
-            
-            let countFraction = fractionalInputString.characters.count
-            var ctrFraction = 0
-            while ctrFraction != countFraction {
-                let index = fractionalInputString.characters.index((fractionalInputString.startIndex), offsetBy: ctrFraction)
-                
-                let fractionBit = hexToIntVal(digit: String(fractionalInputString[index]))
-                print(fractionBit)
-                outputFraction += Double(fractionBit) * multiplier
-                multiplier = multiplier / Double(baseValue)
-                
-                ctrFraction += 1
-            }
-            
-            if (outputFraction == 0.0) {
-                output = outputInt
-            } else {
-                output = outputInt + outputFraction
-            }
-            
-            mainScreen.text = "\(output)"
-            updateCursor()
+            mainScreen.text = converter.convertHexToDecimal(input: mainScreen.text!)
             
         default:
             print("Already decimal")
         }
-        
+ 
+        updateCursor()
         baseValue = 10
         
     }
     
     @IBAction func convertToBinary(_ sender: UIButton) {
         
-        let input = mainScreen.text
-        let inputSplit = input?.components(separatedBy: ".")
-        var inputInt: String = "0"
-        var inputFrac: String = "0"
-        var output: String = "0.0"
-        var outputInt: Int = 0
-        var outputFrac: Double = 0.0
-        
-        if (inputSplit?.count)! > 0 {
-            inputInt = (inputSplit?[0])!
-            
-            if (inputSplit?.count)! > 1 {
-                inputFrac = (inputSplit?[1])!
-            }
-        }
-        
         switch baseValue {
         case 10:
             changeBaseBtnBg(base: 10, newBase: 2)
-       
-            outputInt = Int(String(Int(inputInt)!, radix: 2))!
-            
-            inputFrac = ".\(inputFrac)"
-         
-            for _ in stride(from: 1, to: 10, by: 1){
-                
-                var inputFracInDouble = Double(inputFrac)
-                inputFracInDouble = inputFracInDouble! * 2.0
-                
-                let inputFracSplit = String(inputFracInDouble!).components(separatedBy: "." )
-    
-                inputFrac = ".\(inputFracSplit[1])"
-               
-                outputFrac += Double(Int(inputFracSplit[0])!)
-                outputFrac *= 10
-                
-            }
-
-            outputFrac = Double(".\(Int(outputFrac))")!
+            mainScreen.text = converter.convertDecimalToBinary(input: mainScreen.text!)
             
         case 16:
-            
-            print(inputInt)
-            let outputIntInDecimal = Int(inputInt, radix:16)!
-            outputInt = Int(String(outputIntInDecimal, radix: 2))!
-    
             changeBaseBtnBg(base: 16, newBase: 2)
-        default: break
-        }
+            mainScreen.text = converter.convertHexToBinary(input: mainScreen.text!)
+            
+            
+        default: print("Already binary")
         
-        if inputFrac == "0" {
-            print("Here")
-            output = String(outputInt)
-        } else {
-            output = "\(Double(outputInt) + outputFrac)"
         }
-        
-        mainScreen.text = "\(output)"
         updateCursor()
         baseValue = 2
+    
     }
     
     @IBAction func convertToHex(_ sender: UIButton) {
         
         switch baseValue {
         case 2:
+            
             changeBaseBtnBg(base: 2, newBase: 16)
+            mainScreen.text = converter.convertBinaryToHex(input: mainScreen.text!)
         case 10:
             changeBaseBtnBg(base: 10, newBase: 16)
+            mainScreen.text = converter.converDecimalToHex(input: mainScreen.text!)
+            
         default: break
         }
-        
+        updateCursor()
         baseValue = 16
     }
     
@@ -467,7 +337,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 
                 decimalModeBtn.backgroundColor = UIColor.darkGray
             } else if newBase == 16 {
-                
+               
                 hexModeBtn.backgroundColor = UIColor.darkGray
             }
             
@@ -485,7 +355,5 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         }
     }
-    
-
 }
 
