@@ -47,6 +47,7 @@ class BaseConverter {
     
     func converBinaryToDecimal( input: String ) -> String {
         
+        outputFraction = 0.0
         
         splitInput(input: input)
         
@@ -54,8 +55,6 @@ class BaseConverter {
              self.outputInt = Double(outputInt)
             
         }
-        
-        
         
         multiplier = 1/2
         
@@ -74,6 +73,8 @@ class BaseConverter {
             
             print("Fractional part")
             output = outputInt + outputFraction
+            
+            output = round(output * 100000000)/100000000
             return String(output)
         }
     }
@@ -81,6 +82,8 @@ class BaseConverter {
     
     func convertHexToDecimal(input: String) -> String {
         
+        outputFraction = 0.0
+        outputInt = 0.0
         
         splitInput(input: input)
         
@@ -92,8 +95,11 @@ class BaseConverter {
         
         for inputFractionBit in inputFraction.characters {
             
-            outputFraction += Double(hexToDigit(digit: "\(inputFractionBit)")) * multiplier
-            multiplier = multiplier/16
+            var nextOutputFractionBit = Double(hexToDigit(digit: "\(inputFractionBit)")) * multiplier
+            nextOutputFractionBit = round(nextOutputFractionBit * 10000000)/10000000
+            outputFraction += nextOutputFractionBit
+            print("The output fraction bit is: ", nextOutputFractionBit, inputFractionBit, multiplier )
+            multiplier = round(multiplier/16 * 1000000)/1000000
         }
         
         if noFractionalPart {
@@ -103,6 +109,8 @@ class BaseConverter {
         } else {
             
             output = outputInt + outputFraction
+            output = round(output * 1000000)/1000000
+            
             return String(output)
         }
 
@@ -115,23 +123,34 @@ class BaseConverter {
         let outputIntofTypeString = String(inputIntOfTypeInt!, radix:2)
         outputInt = Double(outputIntofTypeString)!
         
-        var outputFrac: Double = 0.0
+        var outputFrac = ""
         var inputFrac: String = ".\(Int(inputFraction)!)"
-        for _ in stride(from: 1, to: 10, by: 1){
+        var repeatFractionData = checkRecurringFractionalPart(obtainedFraction: outputFrac)
+        while !repeatFractionData.isRepeating && inputFrac != ".0" {
             
             var inputFracInDouble = Double(inputFrac)
             inputFracInDouble = inputFracInDouble! * 2.0
             
             let inputFractionToProcessSplit = String(inputFracInDouble!).components(separatedBy: "." )
             
-            inputFrac = ".\(inputFractionToProcessSplit[1])"
             
-            outputFrac += Double(Int(inputFractionToProcessSplit[0])!)
-            outputFrac *= 10
+            if inputFractionToProcessSplit.indices.contains(1){
+                inputFrac = ".\(inputFractionToProcessSplit[1])"
+            }
+            else{
+                inputFrac = ".0"
+            }
             
+            outputFrac = "\(outputFrac)\(inputFractionToProcessSplit[0])"
+            
+            repeatFractionData = checkRecurringFractionalPart(obtainedFraction: outputFrac)
         }
+        print("Removing repeating fraction")
         
-        outputFraction = Double(".\(Int(outputFrac))")!
+        outputFrac.removeSubrange(repeatFractionData.repeateIndex..<outputFrac.endIndex)
+        outputFrac = ".\(outputFrac)"
+        print("Output frac is: ",outputFrac)
+        
         
         if noFractionalPart {
             
@@ -139,8 +158,11 @@ class BaseConverter {
             
         } else {
             
-            output = outputInt + outputFraction
-            return String(output)
+            if outputFrac.characters.count > 6{
+                let removeRange = outputFrac.index(outputFrac.startIndex, offsetBy: 7)..<outputFrac.endIndex
+                outputFrac.removeSubrange(removeRange)
+            }
+            return String("\(Int(outputInt))\(outputFrac)")
         }
     }
     
@@ -162,8 +184,10 @@ class BaseConverter {
        
         var outputFrac = ""
         var inputFrac: String = ".\(Int(inputFraction)!)"
+        var repeatFractionData = checkRecurringFractionalPart(obtainedFraction: outputFrac)
         
-        for _ in stride(from: 1, to: 5, by: 1){
+        var infiniteWait = 50
+        while !repeatFractionData.isRepeating && inputFrac != ".0" && infiniteWait != 0  {
             
             var inputFracInDouble = Double(inputFrac)
             
@@ -174,14 +198,24 @@ class BaseConverter {
                 print(inputFracInDouble!)
                 let inputFractionToProcessSplit = String(inputFracInDouble!).components(separatedBy: "." )
                 
-                inputFrac = ".\(inputFractionToProcessSplit[1])"
+                if inputFractionToProcessSplit.indices.contains(1){
+                    inputFrac = ".\(inputFractionToProcessSplit[1])"
+                } else{
+                    inputFrac = ".0"
+                }
+                
                 
                 let hexBitToAppend = digitToHex(hex: inputFractionToProcessSplit[0])
                 outputFrac = "\(outputFrac)\(hexBitToAppend)"
-
+                
+                repeatFractionData = checkRecurringFractionalPart(obtainedFraction: outputFrac)
             }
+            
+            infiniteWait -= 1
         }
+        print("Removing repeating fraction")
         
+        outputFrac.removeSubrange(repeatFractionData.repeateIndex..<outputFrac.endIndex)
         outputFrac = ".\(outputFrac)"
         
         
@@ -190,7 +224,12 @@ class BaseConverter {
             return outputIntofTypeString
             
         } else {
-            
+            print("Outputfrac is (D->H): ",outputFrac)
+            if outputFrac.characters.count > 6{
+                let removeRange = outputFrac.index(outputFrac.startIndex, offsetBy: 6)..<outputFrac.endIndex
+                outputFrac.removeSubrange(removeRange)
+            }
+
             
             return "\(outputIntofTypeString)\(outputFrac)"
         }
@@ -201,9 +240,35 @@ class BaseConverter {
     func convertBinaryToHex(input: String) -> String {
         
         let toDecimal = converBinaryToDecimal(input: input)
+        print("Converted value is: ",toDecimal)
         return converDecimalToHex(input: toDecimal)
         
     }
+    
+    func checkRecurringFractionalPart(obtainedFraction: String) -> (isRepeating: Bool ,repeateIndex: String.Index ){
+        
+        
+        var fraction = obtainedFraction
+        
+        if fraction.characters.count >= 10 {
+            for size in (4...fraction.characters.count/2).reversed(){
+                
+                let rangeOfSubString1 = fraction.index(fraction.endIndex, offsetBy: -size)..<fraction.endIndex
+                
+                let rangeOfSubString2 = fraction.index(fraction.endIndex, offsetBy: -2 * size)..<fraction.index(fraction.endIndex, offsetBy: -size)
+                
+                print(fraction[rangeOfSubString1],fraction[rangeOfSubString2])
+                
+                if fraction[rangeOfSubString1] == fraction[rangeOfSubString2] {
+                    print("Found repeating pattern")
+                    return (true, fraction.index(fraction.endIndex, offsetBy: -size))
+                }
+            }
+            
+        }
+        return (false, fraction.endIndex)
+    }
+
     
     func digitToHex(hex: String) -> String {
         if hex == "15" {
