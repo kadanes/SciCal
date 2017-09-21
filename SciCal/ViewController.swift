@@ -36,28 +36,44 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var openingBracketFlag: Bool = false
     var closingBracketFlag: Bool = false
     var baseValue = 10
+    var calculationMode = 0
+    var runs = 0
     
     let converter = BaseConverter()
     
     @IBAction func pressedA(_ sender: Any) {
-        updateMainScreen(input: "A")
+        if calculationMode == 1 && baseValue == 16 {
+            updateMainScreen(input: "A")
+        }
     }
     
     @IBAction func pressedB(_ sender: Any) {
-        updateMainScreen(input: "B")
+        if calculationMode == 1 && baseValue == 16 {
+            updateMainScreen(input: "B")
+        }
     }
    
     @IBAction func pressedC(_ sender: Any) {
-        updateMainScreen(input: "C")
+        
+        if calculationMode == 1 && baseValue == 16 {
+          updateMainScreen(input: "C")
+        }
+        
     }
     @IBAction func pressedD(_ sender: Any) {
-        updateMainScreen(input: "D")
+        if calculationMode == 1 && baseValue == 16 {
+            updateMainScreen(input: "D")
+        }
     }
     @IBAction func pressedE(_ sender: Any) {
-        updateMainScreen(input: "E")
+        if calculationMode == 1 && baseValue == 16 {
+            updateMainScreen(input: "E")
+        }
     }
     @IBAction func pressedF(_ sender: Any) {
-        updateMainScreen(input: "F")
+        if calculationMode == 1 && baseValue == 16 {
+            updateMainScreen(input: "F")
+        }
     }
     @IBAction func pressedMultiply(_ sender: UIButton) {
         if !operationFlag{
@@ -156,24 +172,52 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func primaryButtonPressed(_ sender: UIButton){
         
         let btnValue = sender.tag
+        
+        if calculationMode == 0 {
+            
+            updateMainScreen(input: "\(btnValue)")
+        } else if calculationMode == 1 {
+            
+            if baseValue == 2 {
+                
+                if btnValue == 0 || btnValue == 1 {
+                    
+                    updateMainScreen(input: "\(btnValue)")
+                }
+            } else {
+                
+                updateMainScreen(input: "\(btnValue)")
+            }
+        } else {
+            
+            updateMainScreen(input: "\(btnValue)")
+        }
+        
         operationFlag = false
         openingBracketFlag = true
         closingBracketFlag = false
-        updateMainScreen(input: "\(btnValue)")
-       
     }
     
     @IBAction func didChangeMode(_ sender: UISegmentedControl) {
+        
+        calculationMode = sender.selectedSegmentIndex
         
         if sender.selectedSegmentIndex == 0 {
             
             permutationRow.isHidden = false
             alphabetRow.isHidden = true
             baseChoiceButtons.isHidden = true
+            
+            
+            
+            
         } else if sender.selectedSegmentIndex == 1 {
+            
             permutationRow.isHidden = true
             alphabetRow.isHidden = false
             baseChoiceButtons.isHidden = false
+            
+            
         }
         
     }
@@ -248,9 +292,57 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     
                     // set the new position
                     mainScreen.selectedTextRange = mainScreen.textRange(from: newPosition, to: range.start)
-                    if let updatedRange = mainScreen.selectedTextRange {
+                    let updatedRange = mainScreen.selectedTextRange!
+                    
+                    let selectedItems = mainScreen.text(in: updatedRange)
+                    
+                    if selectedItems == "." {
+                        
+                        decimalFlag = false
+                        mainScreen.replace(updatedRange, withText: "")
+                    } else if selectedItems == " " {
+                        
+                        let newPositionNext = mainScreen.position(from: newPosition, offset: -1)!
+                        mainScreen.replace(updatedRange, withText: "")
+                        
+                        mainScreen.selectedTextRange = mainScreen.textRange(from: newPositionNext, to: newPosition)
+                        let nextUpdatedRange = mainScreen.selectedTextRange!
+                        
+                        let newSelectedItem = mainScreen.text(in: nextUpdatedRange )!
+                        
+                        switch newSelectedItem {
+                            
+                        case ")":
+                            
+                            closingBracketFlag = false
+                        
+                        case "(":
+                            
+                            openingBracketFlag = false
+                            
+                        case "+" , "-" , "*" , "/" :
+                            
+                            operationFlag = false
+                        
+                        default: break
+                            
+                        }
+                        
+                        let finalPosition = mainScreen.position(from: newPositionNext, offset: -1)!
+                        mainScreen.selectedTextRange = mainScreen.textRange(from: finalPosition, to: newPosition)
+                        if let finalUpdatedRange = mainScreen.textRange(from: finalPosition, to: newPosition) {
+                         
+                             mainScreen.replace(finalUpdatedRange, withText: "")
+                        }
+                        
+                    } else {
+                        
                         mainScreen.replace(updatedRange, withText: "")
                     }
+                    
+                        
+                        
+                        //mainScreen.replace(updatedRange, withText: "")
                     
                     updateCursor()
                     
@@ -297,23 +389,92 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func hexToIntVal(digit: String) -> Int {
-        if digit == "A" {
-            return 10
-        } else if digit == "B" {
-            return 11
-        } else if digit == "C" {
-            return 12
-        } else if digit == "D" {
-            return 13
-        } else if digit == "E" {
-            return 14
-        } else if digit == "F" {
-            return 15
-        } else {
-            return Int(digit)!
+    @IBAction func didPanKeyboard(_ sender: UIPanGestureRecognizer) {
+        
+//        let translation = sender.translation(in: self.view)
+//        let startPoint = CGPointZero
+//        let distance = Double(translation.y - startPoint.y)
+//        print("\(distance)")
+        
+        switch(sender.state){
+            
+        case .began:
+            let touchStart = sender.location(in: self.view)
+            
+        case .changed:
+            let distance = sender.translation(in: self.view)
+//            print(distance.x)
+            let xTranslation = round(Double(Int(distance.x)/30))
+            
+            
+            
+            
+            
+            if xTranslation < 0 {
+                
+                
+                runs += 1
+                
+                print("X Translation: ",xTranslation, "Runs: ", runs)
+
+                
+                let leftCharacterRange = mainScreen.textRange(from: (mainScreen.selectedTextRange?.start)!, to: mainScreen.beginningOfDocument)
+                let beginingOfCursor = mainScreen.position(from: (mainScreen.selectedTextRange?.start)!, offset: 0)
+                
+                mainScreen.selectedTextRange = leftCharacterRange
+                
+              let remainingCharacters = Double((mainScreen.text(in: leftCharacterRange!)?.characters.count)!)
+                
+                
+                let resetCharacterRange = mainScreen.textRange(from: beginingOfCursor!, to: beginingOfCursor!)
+                
+                mainScreen.selectedTextRange = resetCharacterRange
+                
+                if remainingCharacters > 0 && xTranslation <= remainingCharacters && runs > 15 {
+                    
+                    let position = mainScreen.position(from: (mainScreen.selectedTextRange?.start)!, offset: Int(xTranslation))!
+                    mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
+                    runs = 0
+                }
+                
+            } else {
+                
+                runs += 1
+                
+                print("X Translation: ",xTranslation, "Runs: ", runs)
+                
+                
+                let rightCharacterRange = mainScreen.textRange(from: (mainScreen.selectedTextRange?.start)!, to: mainScreen.endOfDocument)
+                let beginingOfCursor = mainScreen.position(from: (mainScreen.selectedTextRange?.start)!, offset: 0)
+                
+                mainScreen.selectedTextRange = rightCharacterRange
+                
+                let remainingCharacters = mainScreen.text(in: rightCharacterRange!)?.characters.count
+                
+                
+                let resetCharacterRange = mainScreen.textRange(from: beginingOfCursor!, to: beginingOfCursor!)
+                
+                mainScreen.selectedTextRange = resetCharacterRange
+                
+                if remainingCharacters! > 0  && runs > 20 {
+                    
+                    let position = mainScreen.position(from: (mainScreen.selectedTextRange?.start)!, offset: 1 )!
+                    mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
+                    runs = 0
+                }
+            }
+         
+        default:
+            print("default")
         }
+        
+        
+        
+
+        
+        
     }
+    
     
     func changeBaseBtnBg( base: Int, newBase: Int) {
         

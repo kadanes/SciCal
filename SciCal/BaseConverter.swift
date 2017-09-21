@@ -18,6 +18,8 @@ class BaseConverter {
     var inputFraction: String = "0"
     var noFractionalPart: Bool = false
     
+    var precission = 100000.0
+    
     func splitInput( input : String ) {
         
         print("Received string is \(input)")
@@ -74,7 +76,7 @@ class BaseConverter {
             print("Fractional part")
             output = outputInt + outputFraction
             
-            output = round(output * 100000000)/100000000
+            output = round(output * precission ) / precission
             return String(output)
         }
     }
@@ -96,10 +98,11 @@ class BaseConverter {
         for inputFractionBit in inputFraction.characters {
             
             var nextOutputFractionBit = Double(hexToDigit(digit: "\(inputFractionBit)")) * multiplier
-            nextOutputFractionBit = round(nextOutputFractionBit * 10000000)/10000000
+            nextOutputFractionBit = round(nextOutputFractionBit * precission)/precission
             outputFraction += nextOutputFractionBit
-            print("The output fraction bit is: ", nextOutputFractionBit, inputFractionBit, multiplier )
-            multiplier = round(multiplier/16 * 1000000)/1000000
+            
+            //print("The output fraction bit is: ", nextOutputFractionBit, inputFractionBit, multiplier )
+            multiplier = round(multiplier/16 * precission)/precission
         }
         
         if noFractionalPart {
@@ -108,9 +111,12 @@ class BaseConverter {
             
         } else {
             
-            output = outputInt + outputFraction
-            output = round(output * 1000000)/1000000
+            print("Output fraction in H -> D",outputFraction)
+            print("Output integer in H -> D",outputInt)
             
+            outputFraction = round(outputFraction * precission)/precission
+            output = outputInt + outputFraction
+            print("Output in H -> D",output)
             return String(output)
         }
 
@@ -158,8 +164,8 @@ class BaseConverter {
             
         } else {
             
-            if outputFrac.characters.count > 6{
-                let removeRange = outputFrac.index(outputFrac.startIndex, offsetBy: 7)..<outputFrac.endIndex
+            if outputFrac.characters.count > 15{
+                let removeRange = outputFrac.index(outputFrac.startIndex, offsetBy: 16 )..<outputFrac.endIndex
                 outputFrac.removeSubrange(removeRange)
             }
             return String("\(Int(outputInt))\(outputFrac)")
@@ -170,6 +176,7 @@ class BaseConverter {
     func convertHexToBinary(input: String ) -> String {
         
         let toDecimal = convertHexToDecimal(input: input)
+        print(toDecimal)
         return convertDecimalToBinary(input: toDecimal)
     
     }
@@ -225,8 +232,8 @@ class BaseConverter {
             
         } else {
             print("Outputfrac is (D->H): ",outputFrac)
-            if outputFrac.characters.count > 6{
-                let removeRange = outputFrac.index(outputFrac.startIndex, offsetBy: 6)..<outputFrac.endIndex
+            if outputFrac.characters.count > 15{
+                let removeRange = outputFrac.index(outputFrac.startIndex, offsetBy: 16)..<outputFrac.endIndex
                 outputFrac.removeSubrange(removeRange)
             }
 
@@ -250,7 +257,7 @@ class BaseConverter {
         
         var fraction = obtainedFraction
         
-        if fraction.characters.count >= 10 {
+        if fraction.characters.count >= 15 {
             for size in (4...fraction.characters.count/2).reversed(){
                 
                 let rangeOfSubString1 = fraction.index(fraction.endIndex, offsetBy: -size)..<fraction.endIndex
