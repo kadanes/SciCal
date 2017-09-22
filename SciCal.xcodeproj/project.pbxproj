@@ -15,6 +15,8 @@
 		B234653F1F69581200486FE7 /* SciCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B234653E1F69581200486FE7 /* SciCalTests.swift */; };
 		B234654D1F6997F800486FE7 /* ButtonBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B234654C1F6997F800486FE7 /* ButtonBorder.swift */; };
 		B292B9351F700DE200ED8EFA /* BaseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292B9341F700DE200ED8EFA /* BaseConverter.swift */; };
+		B2B22C641F75377600CDEDA1 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B22C631F75377600CDEDA1 /* Stack.swift */; };
+		B2B22C661F75388B00CDEDA1 /* ExpressionEvaluator..swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B22C651F75388B00CDEDA1 /* ExpressionEvaluator..swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		B23465401F69581200486FE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B234654C1F6997F800486FE7 /* ButtonBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBorder.swift; sourceTree = "<group>"; };
 		B292B9341F700DE200ED8EFA /* BaseConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseConverter.swift; sourceTree = "<group>"; };
+		B2B22C631F75377600CDEDA1 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		B2B22C651F75388B00CDEDA1 /* ExpressionEvaluator..swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionEvaluator..swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				B292B9341F700DE200ED8EFA /* BaseConverter.swift */,
+				B2B22C631F75377600CDEDA1 /* Stack.swift */,
+				B2B22C651F75388B00CDEDA1 /* ExpressionEvaluator..swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -224,6 +230,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B234652C1F69581200486FE7 /* ViewController.swift in Sources */,
+				B2B22C641F75377600CDEDA1 /* Stack.swift in Sources */,
+				B2B22C661F75388B00CDEDA1 /* ExpressionEvaluator..swift in Sources */,
 				B292B9351F700DE200ED8EFA /* BaseConverter.swift in Sources */,
 				B234654D1F6997F800486FE7 /* ButtonBorder.swift in Sources */,
 				B234652A1F69581200486FE7 /* AppDelegate.swift in Sources */,

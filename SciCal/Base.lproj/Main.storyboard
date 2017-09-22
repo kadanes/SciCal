@@ -406,6 +406,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="borderSet" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="pressedFactorial:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MEA-zm-3An"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmK-Yq-Azh">
                                                 <rect key="frame" x="187.5" y="0.0" width="62.5" height="54.5"/>
@@ -757,7 +760,7 @@
                                         <rect key="frame" x="0.0" y="327.5" width="375" height="54.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlt-QI-3Li">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="54.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="62.5" height="54.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="0">
                                                     <color key="titleColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -771,7 +774,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ztF-Uw-kVr">
-                                                <rect key="frame" x="75" y="0.0" width="75" height="54.5"/>
+                                                <rect key="frame" x="62.5" y="0.0" width="62.5" height="54.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title=".">
                                                     <color key="titleColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -785,9 +788,9 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gb5-IU-aCd">
-                                                <rect key="frame" x="150" y="0.0" width="75" height="54.5"/>
+                                                <rect key="frame" x="125" y="0.0" width="62.5" height="54.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="10^x">
+                                                <state key="normal" title="^">
                                                     <color key="titleColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -798,19 +801,33 @@
                                                     <action selector="pressedExponent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D38-pj-555"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gg8-vu-9Bo">
-                                                <rect key="frame" x="225" y="0.0" width="75" height="54.5"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gg8-vu-9Bo">
+                                                <rect key="frame" x="187.5" y="0.0" width="62.5" height="54.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="=">
-                                                    <color key="titleColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.20702298220108006" green="0.6267175178237373" blue="0.18092791516206613" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="borderSet" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUR-81-KaT">
+                                                <rect key="frame" x="250" y="0.0" width="62.5" height="54.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="=">
+                                                    <color key="titleColor" red="0.28002889204822423" green="0.63750003433073998" blue="0.64966687817258884" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="borderSet" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="arithmeticEqualPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Y0-C7-2vX"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abd-Iq-a9Q">
-                                                <rect key="frame" x="300" y="0.0" width="75" height="54.5"/>
+                                                <rect key="frame" x="312.5" y="0.0" width="62.5" height="54.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="AC">
                                                     <color key="titleColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -854,7 +871,9 @@
                     </view>
                     <connections>
                         <outlet property="alphabetRow" destination="bew-Se-wb2" id="Tpz-0m-PDy"/>
+                        <outlet property="arithmeticEqualTo" destination="JUR-81-KaT" id="8M4-hl-bqe"/>
                         <outlet property="baseChoiceButtons" destination="tja-uI-x2x" id="OWo-bS-0e4"/>
+                        <outlet property="baseNEqualTo" destination="Gg8-vu-9Bo" id="cse-Ok-Ld6"/>
                         <outlet property="binaryModeBtn" destination="lX1-3l-4zx" id="TJQ-vP-4Kr"/>
                         <outlet property="cursorPositionSlider" destination="bSB-7y-fg4" id="UBy-43-a30"/>
                         <outlet property="decimalModeBtn" destination="7Yq-XL-z4F" id="b4C-M1-fXg"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -30,6 +31,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var hexModeBtn: UIButton!
     
+    @IBOutlet weak var arithmeticEqualTo: UIButton!
+    
+    @IBOutlet weak var baseNEqualTo: UIButton!
     
     var operationFlag: Bool = false
     var decimalFlag: Bool = false
@@ -44,12 +48,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func pressedA(_ sender: Any) {
         if calculationMode == 1 && baseValue == 16 {
             updateMainScreen(input: "A")
+             AudioServicesPlaySystemSound(1520)
         }
     }
     
     @IBAction func pressedB(_ sender: Any) {
         if calculationMode == 1 && baseValue == 16 {
             updateMainScreen(input: "B")
+             AudioServicesPlaySystemSound(1520)
         }
     }
    
@@ -57,22 +63,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         if calculationMode == 1 && baseValue == 16 {
           updateMainScreen(input: "C")
+             AudioServicesPlaySystemSound(1520)
         }
         
     }
     @IBAction func pressedD(_ sender: Any) {
         if calculationMode == 1 && baseValue == 16 {
             updateMainScreen(input: "D")
+             AudioServicesPlaySystemSound(1520)
         }
     }
     @IBAction func pressedE(_ sender: Any) {
         if calculationMode == 1 && baseValue == 16 {
             updateMainScreen(input: "E")
+             AudioServicesPlaySystemSound(1520)
         }
     }
     @IBAction func pressedF(_ sender: Any) {
         if calculationMode == 1 && baseValue == 16 {
             updateMainScreen(input: "F")
+             AudioServicesPlaySystemSound(1520)
         }
     }
     @IBAction func pressedMultiply(_ sender: UIButton) {
@@ -83,6 +93,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             operationFlag = false
             openingBracketFlag = false
             closingBracketFlag = true
+             AudioServicesPlaySystemSound(1520)
         }
         
     }
@@ -93,6 +104,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             decimalFlag = false
             openingBracketFlag = false
             closingBracketFlag = true
+             AudioServicesPlaySystemSound(1520)
         }
     }
     @IBAction func pressedPlus(_ sender: UIButton) {
@@ -102,6 +114,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             decimalFlag = false
             openingBracketFlag = false
             closingBracketFlag = true
+             AudioServicesPlaySystemSound(1520)
         }
     }
     @IBAction func pressedMinus(_ sender: UIButton) {
@@ -111,17 +124,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
             decimalFlag = false
             openingBracketFlag = false
             closingBracketFlag = true
+             AudioServicesPlaySystemSound(1520)
         }
     }
     @IBAction func pressedOpeningBracket(_ sender: UIButton) {
         if !openingBracketFlag {
-            updateMainScreen(input: " ( ")
+            updateMainScreen(input: "( ")
+             AudioServicesPlaySystemSound(1520)
         }
         
     }
     @IBAction func pressedOpeningClosing(_ sender: UIButton) {
         if !closingBracketFlag {
-            updateMainScreen(input: " ) ")
+            updateMainScreen(input: " )")
+             AudioServicesPlaySystemSound(1520)
         }
         
     }
@@ -133,17 +149,34 @@ class ViewController: UIViewController, UITextFieldDelegate {
             operationFlag = true
             closingBracketFlag = true
             openingBracketFlag = true
+             AudioServicesPlaySystemSound(1520)
         }
     }
     
+    @IBAction func pressedFactorial(_ sender: UIButton) {
+        
+        updateMainScreen(input: " !")
+         AudioServicesPlaySystemSound(1520)
+    }
+    
+    
     @IBAction func pressedExponent(_ sender: UIButton) {
         if !operationFlag {
-            updateMainScreen(input: " * 10^")
+            updateMainScreen(input: " ^ ")
+             AudioServicesPlaySystemSound(1520)
+            
+            if let currentPosition = mainScreen.selectedTextRange?.start {
+                
+                if let position = mainScreen.position(from: currentPosition, offset: -3) {
+                    
+                    mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
+                }
+            }
         }
     }
     
     @IBAction func pressedAC(_ sender: UIButton) {
-        mainScreen.text = "0"
+        mainScreen.text = ""
         resetFlags()
         updateCursor()
     }
@@ -176,6 +209,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if calculationMode == 0 {
             
             updateMainScreen(input: "\(btnValue)")
+             AudioServicesPlaySystemSound(1520)
+            
         } else if calculationMode == 1 {
             
             if baseValue == 2 {
@@ -183,14 +218,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 if btnValue == 0 || btnValue == 1 {
                     
                     updateMainScreen(input: "\(btnValue)")
+                     AudioServicesPlaySystemSound(1520)
                 }
             } else {
                 
                 updateMainScreen(input: "\(btnValue)")
+                 AudioServicesPlaySystemSound(1520)
             }
         } else {
             
             updateMainScreen(input: "\(btnValue)")
+             AudioServicesPlaySystemSound(1520)
         }
         
         operationFlag = false
@@ -208,7 +246,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             alphabetRow.isHidden = true
             baseChoiceButtons.isHidden = true
             
-            
+            arithmeticEqualTo.isHidden = false
+            baseNEqualTo.isHidden = true
             
             
         } else if sender.selectedSegmentIndex == 1 {
@@ -216,7 +255,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             permutationRow.isHidden = true
             alphabetRow.isHidden = false
             baseChoiceButtons.isHidden = false
-            
+           
+            arithmeticEqualTo.isHidden = true
+            baseNEqualTo.isHidden = false
             
         }
         
@@ -351,6 +392,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    
+    @IBAction func arithmeticEqualPressed(_ sender: UIButton) {
+        
+        let solver = ExpressionEvaluator(infix: mainScreen.text!, mode: 0)
+        
+        let result = solver.evaluateExpression()
+        
+        mainScreen.text = result
+        updateCursor()
+    }
+    
+    
     @IBAction func changeCursorPosition(_ sender: Any) {
         
         let cursorPosition = Int(cursorPositionSlider.value)
@@ -391,88 +444,100 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func didPanKeyboard(_ sender: UIPanGestureRecognizer) {
         
-//        let translation = sender.translation(in: self.view)
-//        let startPoint = CGPointZero
-//        let distance = Double(translation.y - startPoint.y)
-//        print("\(distance)")
+        let maxRuns = 10
         
         switch(sender.state){
             
-        case .began:
-            let touchStart = sender.location(in: self.view)
+//        case .began:
+//            let touchStart = sender.location(in: self.view)
             
         case .changed:
+            
+            
+            
             let distance = sender.translation(in: self.view)
 //            print(distance.x)
-            let xTranslation = round(Double(Int(distance.x)/30))
-            
-            
-            
-            
+            //let xTranslation = round(Double(Int(distance.x)/30))
+            let xTranslation = Double(distance.x)
             
             if xTranslation < 0 {
                 
                 
                 runs += 1
                 
-                print("X Translation: ",xTranslation, "Runs: ", runs)
+                //print("X Translation: ",xTranslation, "Runs: ", runs)
 
-                
-                let leftCharacterRange = mainScreen.textRange(from: (mainScreen.selectedTextRange?.start)!, to: mainScreen.beginningOfDocument)
-                let beginingOfCursor = mainScreen.position(from: (mainScreen.selectedTextRange?.start)!, offset: 0)
-                
-                mainScreen.selectedTextRange = leftCharacterRange
-                
-              let remainingCharacters = Double((mainScreen.text(in: leftCharacterRange!)?.characters.count)!)
-                
-                
-                let resetCharacterRange = mainScreen.textRange(from: beginingOfCursor!, to: beginingOfCursor!)
-                
-                mainScreen.selectedTextRange = resetCharacterRange
-                
-                if remainingCharacters > 0 && xTranslation <= remainingCharacters && runs > 15 {
+                if let innitialCursorPositon = mainScreen.selectedTextRange?.start {
                     
-                    let position = mainScreen.position(from: (mainScreen.selectedTextRange?.start)!, offset: Int(xTranslation))!
-                    mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
-                    runs = 0
-                }
-                
-            } else {
+                    
+                    if let beginingOfCursor = mainScreen.position(from: innitialCursorPositon , offset: 0) {
+                       
+                            if let leftCharacterRange = mainScreen.textRange(from: innitialCursorPositon , to: mainScreen.beginningOfDocument) {
+                                
+                                mainScreen.selectedTextRange = leftCharacterRange
+                                
+                                
+                                let remainingCharacters = Double((mainScreen.text(in: leftCharacterRange)?.characters.count)!)
+                                
+                                
+                                let resetCharacterRange = mainScreen.textRange(from: beginingOfCursor, to: beginingOfCursor)
+                                
+                                mainScreen.selectedTextRange = resetCharacterRange
+                                
+                                if remainingCharacters > 0 && runs > maxRuns {
+                                    
+                                    AudioServicesPlaySystemSound(1519)
+                                    
+                                    if let position = mainScreen.position(from: (mainScreen.selectedTextRange?.start)!, offset: -1) {
+                                        
+                                        mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
+                                        updateCursor()
+                                    }
+                                    runs = 0
+                                }
+                            }
+
+                        }
+                    }
+                } else {
                 
                 runs += 1
-                
-                print("X Translation: ",xTranslation, "Runs: ", runs)
-                
-                
-                let rightCharacterRange = mainScreen.textRange(from: (mainScreen.selectedTextRange?.start)!, to: mainScreen.endOfDocument)
-                let beginingOfCursor = mainScreen.position(from: (mainScreen.selectedTextRange?.start)!, offset: 0)
-                
-                mainScreen.selectedTextRange = rightCharacterRange
-                
-                let remainingCharacters = mainScreen.text(in: rightCharacterRange!)?.characters.count
-                
-                
-                let resetCharacterRange = mainScreen.textRange(from: beginingOfCursor!, to: beginingOfCursor!)
-                
-                mainScreen.selectedTextRange = resetCharacterRange
-                
-                if remainingCharacters! > 0  && runs > 20 {
+                if let innitialCursorPositon = mainScreen.selectedTextRange?.start {
                     
-                    let position = mainScreen.position(from: (mainScreen.selectedTextRange?.start)!, offset: 1 )!
-                    mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
-                    runs = 0
+                    
+                    if let beginingOfCursor = mainScreen.position(from: innitialCursorPositon , offset: 0) {
+                        
+                        if let rightCharacterRange = mainScreen.textRange(from: innitialCursorPositon , to: mainScreen.endOfDocument) {
+                            
+                            mainScreen.selectedTextRange = rightCharacterRange
+                            
+                            
+                            let remainingCharacters = Double((mainScreen.text(in: rightCharacterRange)?.characters.count)!)
+                            
+                            
+                            let resetCharacterRange = mainScreen.textRange(from: beginingOfCursor, to: beginingOfCursor)
+                            
+                            mainScreen.selectedTextRange = resetCharacterRange
+                            
+                            if remainingCharacters > 0 && runs > maxRuns {
+                                
+                                AudioServicesPlaySystemSound(1519)
+                                
+                                if let position = mainScreen.position(from: (mainScreen.selectedTextRange?.start)!, offset: 1) {
+                                    
+                                    mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
+                                    updateCursor()
+                                }
+                                runs = 0
+                            }
+                        }
+                    }
                 }
             }
-         
+            
         default:
             print("default")
         }
-        
-        
-        
-
-        
-        
     }
     
     
