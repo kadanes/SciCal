@@ -35,6 +35,7 @@
 		63DE1EFEA3FD21BF747303DF /* Pods-SciCalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SciCalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SciCalTests/Pods-SciCalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AABF76C5D7389F05AF59FA9C /* Pods_SciCalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SciCalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B232A6161F7644210066858C /* SciCal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SciCal-Bridging-Header.h"; sourceTree = "<group>"; };
+		B232A6171F7649FE0066858C /* bridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridgingHeader.h; sourceTree = "<group>"; };
 		B23465261F69581200486FE7 /* SciCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SciCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23465291F69581200486FE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B234652B1F69581200486FE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +90,7 @@
 		B234651D1F69581200486FE7 = {
 			isa = PBXGroup;
 			children = (
+				B232A6171F7649FE0066858C /* bridgingHeader.h */,
 				B23465281F69581200486FE7 /* SciCal */,
 				B234653D1F69581200486FE7 /* SciCalTests */,
 				B23465271F69581200486FE7 /* Products */,
@@ -524,7 +526,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.parthtamane.SciCal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SciCal/SciCal-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = bridgingHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -540,7 +542,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.parthtamane.SciCal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SciCal/SciCal-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = bridgingHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
