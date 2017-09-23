@@ -9,6 +9,8 @@
 import UIKit
 import AudioToolbox
 
+import iosMath
+
 class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var modeSelector: UISegmentedControl!

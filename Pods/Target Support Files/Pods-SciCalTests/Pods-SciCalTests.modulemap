@@ -1,0 +1,6 @@
+framework module Pods_SciCalTests {
+  umbrella header "Pods-SciCalTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

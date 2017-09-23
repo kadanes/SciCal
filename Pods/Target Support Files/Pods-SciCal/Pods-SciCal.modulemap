@@ -1,0 +1,6 @@
+framework module Pods_SciCal {
+  umbrella header "Pods-SciCal-umbrella.h"
+
+  export *
+  module * { export * }
+}
