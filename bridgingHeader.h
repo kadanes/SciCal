@@ -6,9 +6,12 @@
 //  Copyright © 2017 Parth Tamane. All rights reserved.
 //
 
+
+#import <IosMath.h>
+
 #ifndef bridgingHeader_h
 #define bridgingHeader_h
 
-#import <IosMath.h>
+
 
 #endif /* bridgingHeader_h */
