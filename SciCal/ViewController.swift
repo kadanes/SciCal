@@ -8,7 +8,6 @@
 
 import UIKit
 import AudioToolbox
-
 import iosMath
 
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -37,6 +36,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var baseNEqualTo: UIButton!
     
+    
+  
     var operationFlag: Bool = false
     var decimalFlag: Bool = false
     var openingBracketFlag: Bool = false
@@ -44,8 +45,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var baseValue = 10
     var calculationMode = 0
     var runs = 0
+    var latexString = ""
     
     let converter = BaseConverter()
+    
+    let label =  MTMathUILabel()
+    
+    
+    
     
     @IBAction func pressedA(_ sender: Any) {
         if calculationMode == 1 && baseValue == 16 {
@@ -201,6 +208,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         mainScreen.delegate = self
         mainScreen.inputView = UIView()
         mainScreen.becomeFirstResponder()
+        
+        label.latex =  "x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}"
+        label.textColor = UIColor.white
+        
+        label.frame = CGRect.init(x: 0.0, y: 0.0, width: 200.0, height: 100.0)
+        
+        
+        mainScreen.addSubview(label)
         
     }
     

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6F45DF00DF3EC8262E3FB12E /* Pods_SciCalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABF76C5D7389F05AF59FA9C /* Pods_SciCalTests.framework */; };
 		B234652A1F69581200486FE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23465291F69581200486FE7 /* AppDelegate.swift */; };
 		B234652C1F69581200486FE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B234652B1F69581200486FE7 /* ViewController.swift */; };
 		B234652F1F69581200486FE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B234652D1F69581200486FE7 /* Main.storyboard */; };
@@ -18,7 +17,7 @@
 		B292B9351F700DE200ED8EFA /* BaseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B292B9341F700DE200ED8EFA /* BaseConverter.swift */; };
 		B2B22C641F75377600CDEDA1 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B22C631F75377600CDEDA1 /* Stack.swift */; };
 		B2B22C661F75388B00CDEDA1 /* ExpressionEvaluator..swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B22C651F75388B00CDEDA1 /* ExpressionEvaluator..swift */; };
-		F1C28CDB3F25E79783701F41 /* Pods_SciCal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D7533699F308DF1A6C359E /* Pods_SciCal.framework */; };
+		D95188B5EA755C519339D08F /* Pods_SciCal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB639166289D1B02DC825D7E /* Pods_SciCal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,10 +31,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		63DE1EFEA3FD21BF747303DF /* Pods-SciCalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SciCalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SciCalTests/Pods-SciCalTests.debug.xcconfig"; sourceTree = "<group>"; };
-		AABF76C5D7389F05AF59FA9C /* Pods_SciCalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SciCalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B232A6161F7644210066858C /* SciCal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SciCal-Bridging-Header.h"; sourceTree = "<group>"; };
-		B232A6171F7649FE0066858C /* bridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridgingHeader.h; sourceTree = "<group>"; };
 		B23465261F69581200486FE7 /* SciCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SciCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23465291F69581200486FE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B234652B1F69581200486FE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,10 +45,10 @@
 		B292B9341F700DE200ED8EFA /* BaseConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseConverter.swift; sourceTree = "<group>"; };
 		B2B22C631F75377600CDEDA1 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		B2B22C651F75388B00CDEDA1 /* ExpressionEvaluator..swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionEvaluator..swift; sourceTree = "<group>"; };
-		B8D7533699F308DF1A6C359E /* Pods_SciCal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SciCal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E825894A34731E3C383D622F /* Pods-SciCal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SciCal.release.xcconfig"; path = "Pods/Target Support Files/Pods-SciCal/Pods-SciCal.release.xcconfig"; sourceTree = "<group>"; };
-		F41F486320A3EF6A3D0929BA /* Pods-SciCalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SciCalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SciCalTests/Pods-SciCalTests.release.xcconfig"; sourceTree = "<group>"; };
-		F67CB0E1A7EA84D5AC98783F /* Pods-SciCal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SciCal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SciCal/Pods-SciCal.debug.xcconfig"; sourceTree = "<group>"; };
+		B2F635281F76AE4700F3DE93 /* iosMath.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iosMath.framework; path = "Pods/../build/Debug-iphoneos/iosMath/iosMath.framework"; sourceTree = "<group>"; };
+		BA14C797DD539C8939F94DC3 /* Pods-SciCal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SciCal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SciCal/Pods-SciCal.debug.xcconfig"; sourceTree = "<group>"; };
+		DB639166289D1B02DC825D7E /* Pods_SciCal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SciCal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDF1F4B1FF92D795E71A2888 /* Pods-SciCal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SciCal.release.xcconfig"; path = "Pods/Target Support Files/Pods-SciCal/Pods-SciCal.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1C28CDB3F25E79783701F41 /* Pods_SciCal.framework in Frameworks */,
+				D95188B5EA755C519339D08F /* Pods_SciCal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,33 +64,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F45DF00DF3EC8262E3FB12E /* Pods_SciCalTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6DF168F9EE8D0FE8A092CDF0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F67CB0E1A7EA84D5AC98783F /* Pods-SciCal.debug.xcconfig */,
-				E825894A34731E3C383D622F /* Pods-SciCal.release.xcconfig */,
-				63DE1EFEA3FD21BF747303DF /* Pods-SciCalTests.debug.xcconfig */,
-				F41F486320A3EF6A3D0929BA /* Pods-SciCalTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		B234651D1F69581200486FE7 = {
 			isa = PBXGroup;
 			children = (
-				B232A6171F7649FE0066858C /* bridgingHeader.h */,
 				B23465281F69581200486FE7 /* SciCal */,
 				B234653D1F69581200486FE7 /* SciCalTests */,
 				B23465271F69581200486FE7 /* Products */,
-				6DF168F9EE8D0FE8A092CDF0 /* Pods */,
 				DB6CE76A891AE1ECDFFABC4E /* Frameworks */,
+				FDCB102797C821B4DEE67BF6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,7 +101,6 @@
 				B23465301F69581200486FE7 /* Assets.xcassets */,
 				B23465321F69581200486FE7 /* LaunchScreen.storyboard */,
 				B23465351F69581200486FE7 /* Info.plist */,
-				B232A6161F7644210066858C /* SciCal-Bridging-Header.h */,
 			);
 			path = SciCal;
 			sourceTree = "<group>";
@@ -154,10 +135,19 @@
 		DB6CE76A891AE1ECDFFABC4E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B8D7533699F308DF1A6C359E /* Pods_SciCal.framework */,
-				AABF76C5D7389F05AF59FA9C /* Pods_SciCalTests.framework */,
+				B2F635281F76AE4700F3DE93 /* iosMath.framework */,
+				DB639166289D1B02DC825D7E /* Pods_SciCal.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FDCB102797C821B4DEE67BF6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BA14C797DD539C8939F94DC3 /* Pods-SciCal.debug.xcconfig */,
+				DDF1F4B1FF92D795E71A2888 /* Pods-SciCal.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,12 +157,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B23465431F69581200486FE7 /* Build configuration list for PBXNativeTarget "SciCal" */;
 			buildPhases = (
-				702F7F2C2B9FC645C58ECBF0 /* [CP] Check Pods Manifest.lock */,
+				901C11BF67424198F03F3A97 /* [CP] Check Pods Manifest.lock */,
 				B23465221F69581200486FE7 /* Sources */,
 				B23465231F69581200486FE7 /* Frameworks */,
 				B23465241F69581200486FE7 /* Resources */,
-				B436AEBD3422ACADF5D61CDA /* [CP] Embed Pods Frameworks */,
-				6B6C7ACD12918088E456E930 /* [CP] Copy Pods Resources */,
+				7560CA49E55C4BEAF00E0428 /* [CP] Embed Pods Frameworks */,
+				98358909D0C0B91EA89DE5C9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -187,12 +177,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B23465461F69581200486FE7 /* Build configuration list for PBXNativeTarget "SciCalTests" */;
 			buildPhases = (
-				FCA07C0F216D18509FD93C84 /* [CP] Check Pods Manifest.lock */,
 				B23465361F69581200486FE7 /* Sources */,
 				B23465371F69581200486FE7 /* Frameworks */,
 				B23465381F69581200486FE7 /* Resources */,
-				87795FC1F212F164C605967C /* [CP] Embed Pods Frameworks */,
-				8DA61351616BE46D5AAAC4BC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,6 +204,7 @@
 					B23465251F69581200486FE7 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = U4985LT7P8;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					B23465391F69581200486FE7 = {
@@ -267,22 +255,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6B6C7ACD12918088E456E930 /* [CP] Copy Pods Resources */ = {
+		7560CA49E55C4BEAF00E0428 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SciCal/Pods-SciCal-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/iosMath/iosMath.framework",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iosMath.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SciCal/Pods-SciCal-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SciCal/Pods-SciCal-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		702F7F2C2B9FC645C58ECBF0 /* [CP] Check Pods Manifest.lock */ = {
+		901C11BF67424198F03F3A97 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -300,25 +291,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		87795FC1F212F164C605967C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SciCalTests/Pods-SciCalTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/iosMath/iosMath.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iosMath.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SciCalTests/Pods-SciCalTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8DA61351616BE46D5AAAC4BC /* [CP] Copy Pods Resources */ = {
+		98358909D0C0B91EA89DE5C9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -330,40 +303,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SciCalTests/Pods-SciCalTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B436AEBD3422ACADF5D61CDA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SciCal/Pods-SciCal-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FCA07C0F216D18509FD93C84 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SciCalTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SciCal/Pods-SciCal-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -517,41 +457,49 @@
 		};
 		B23465441F69581200486FE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F67CB0E1A7EA84D5AC98783F /* Pods-SciCal.debug.xcconfig */;
+			baseConfigurationReference = BA14C797DD539C8939F94DC3 /* Pods-SciCal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = U4985LT7P8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/iosMath",
+				);
 				INFOPLIST_FILE = SciCal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.parthtamane.SciCal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "./SciCal/SciCal-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		B23465451F69581200486FE7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E825894A34731E3C383D622F /* Pods-SciCal.release.xcconfig */;
+			baseConfigurationReference = DDF1F4B1FF92D795E71A2888 /* Pods-SciCal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = U4985LT7P8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/iosMath",
+				);
 				INFOPLIST_FILE = SciCal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.parthtamane.SciCal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "./SciCal/SciCal-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		B23465471F69581200486FE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 63DE1EFEA3FD21BF747303DF /* Pods-SciCalTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -567,7 +515,6 @@
 		};
 		B23465481F69581200486FE7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F41F486320A3EF6A3D0929BA /* Pods-SciCalTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

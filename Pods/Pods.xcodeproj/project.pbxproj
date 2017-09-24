@@ -18,22 +18,21 @@
 		23B3BF994E3D6D80EB8F3445347A41D4 /* iosMath-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D506FFC36684B5DFE599E11455AC5E61 /* iosMath-dummy.m */; };
 		28ED3A0B865E123C4771247A91948365 /* texgyretermes-math.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFFC6A39CA7864E84699E7C3D925EBCC /* texgyretermes-math.plist */; };
 		291DAF3612ECDA472EDFE4AE52B35D01 /* NSColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D031BA9BF8BDF5EEAF80CEE09D177B5 /* NSColor+HexString.m */; };
-		2A59C02DE08E20B5784A2D5118229376 /* Pods-SciCalTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B42206F8C7B23F54B9A6CD005976785 /* Pods-SciCalTests-dummy.m */; };
 		2B0FFB0293BB37BFB9D5980BB2E4EFAD /* iosMath-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D94E9895B2E6B35EE097B4BAEB8434D /* iosMath-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C57F109091542A3138872E777FEEE58 /* Pods-SciCal-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B260BAF1DAD58227FCD1A166B484E4B /* Pods-SciCal-dummy.m */; };
 		2E82EC8E7E191BB01B06896A5878EAEE /* MTUnicode.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F41A7376ED9DBDE9751E686253D732 /* MTUnicode.m */; };
 		345ED928F89929FF0C0BDE7F03E28C73 /* MTFontManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F75FE559A8F315471E00FFD510A6CBF /* MTFontManager.m */; };
 		360DF25B3613FC65E4AE08EBDD701A78 /* NSView+backgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF8585C5F4856232E2E3E4AF82E18DAB /* NSView+backgroundColor.m */; };
+		3739BDDC165F79AC9DF19DE9C128B19F /* Pods-SciCal-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 50FA3BD9A875D2ABDCDD928A521ED9D6 /* Pods-SciCal-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40004858D2D5D91753A668F7807EDA0E /* UIColor+HexString.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A32FFB53B409A227F5A8B09AE896B72 /* UIColor+HexString.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FED369F179E9D7F1148277C3E19327D /* MTFontManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 006AA4189B48F7556367BF3434DB108A /* MTFontManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5CCEFF8002AA2BC6644F85341EE0691D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F59D694A9020F0959A3D1601E40BACC9 /* CoreText.framework */; };
 		5D74114FF0995C785F41BC997970809B /* NSView+backgroundColor.h in Headers */ = {isa = PBXBuildFile; fileRef = C41CA90F32773FFEB76A7EE31B85D139 /* NSView+backgroundColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		67AAA4B30DEE5E0459315EAE147D08A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF58CC92310C0395FBA5E5C639C12F03 /* Foundation.framework */; };
-		6C2B852333E2312754FDB1DCC6B011EF /* mathFonts.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9D7F58AC40723B9BD81DDDDF571AE67D /* mathFonts.bundle */; };
+		6C2B852333E2312754FDB1DCC6B011EF /* mathFonts.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE672F623929AC44F6E2A25641B4FA79 /* mathFonts.bundle */; };
 		6C8A47148EBD541AC12C11E60C51EF12 /* texgyretermes-math.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99602F84205D94A5510DAD2618D5FD0 /* texgyretermes-math.otf */; };
 		7712EC2BCCF93BDC4DA2A6E1F69ECECE /* MTConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D5F4F75905778168F7F8B3FF09C214D2 /* MTConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C4732379298E1D5EB259E97B75A55B4 /* MTMathListDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA313DA426E6E4BA7F53F2BD4E2217 /* MTMathListDisplay.m */; };
 		8237D2C7CA0BAA6702DFEFC18156C6FE /* MTMathListIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E682FF06D4A710D4090D9426052A8EC /* MTMathListIndex.m */; };
-		865EB5F29A8AA8199CB99E8008C977E0 /* Pods-SciCalTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 09DF9D3E711B2B927BBBBBD9F9D9FDB6 /* Pods-SciCalTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A59895B998232336892E32BD096DC78 /* MTMathListBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 25A0CB1A25FF374EE6A8E29E3F30B569 /* MTMathListBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B3D8E565618EEE0C9D89D01647A48F3 /* MTMathUILabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E6A9ECAC9FB373744BDE1C3ADC8526C5 /* MTMathUILabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		91BB115206E501BF66351EE8C1130509 /* MTFont+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 566EBF5421D338B0294CD7DBCC956B27 /* MTFont+Internal.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -42,22 +41,20 @@
 		9D4F71C5ED696ECF7EE08CC4FC7E320F /* MTTypesetter.m in Sources */ = {isa = PBXBuildFile; fileRef = F28EC1222F0A7C1E8F6B470441CAB6DB /* MTTypesetter.m */; };
 		9FEBBD97E5221D1FFD9F76EF8DA0B20D /* MTFontMathTable.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DD637947A66BC392587A8F25C5366 /* MTFontMathTable.m */; };
 		A962531423E2DDB49B6C6F9EC8FB0B23 /* MTMathAtomFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C2DD1CC1BEC006C3CC72D41A2C4B070 /* MTMathAtomFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B111EE6456B9BFE7F2978BBC7F299572 /* Pods-SciCal-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DBD49BF4E71471666EFC58F2299521 /* Pods-SciCal-dummy.m */; };
 		B3C2AC70552A3CC2025F634FA68166F3 /* MTMathList.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C91879E3F29B0A68E38EB10E50A9A3E /* MTMathList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B84181E34A1DE69138863445C3487A7E /* latinmodern-math.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0F85ABB5FC8E5C025806B46C439FC0E /* latinmodern-math.plist */; };
 		B85ADAA137335CEDDA3C7C074E69A14A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF58CC92310C0395FBA5E5C639C12F03 /* Foundation.framework */; };
 		BF9AA245DD1FDF5F7403B063BA73F6DE /* MTFontMathTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 79C73AF30D60E2D2B9474C5F20398F77 /* MTFontMathTable.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C0A3B092E1F2A5BBE005A99C8E2D34F8 /* xits-math.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28A227ECCEDA6F4773C7A1E1D59D31E7 /* xits-math.otf */; };
+		C2B32675F71BA192D3ECD1FA9F569B04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF58CC92310C0395FBA5E5C639C12F03 /* Foundation.framework */; };
 		CAD3FE38E609A6D7D15D1A4E45FE1E23 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75724AFC8DB229902C200CFD229B7576 /* QuartzCore.framework */; };
 		CE90381180386B8A7B6E1FFBFD983653 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4EE262349108144307D042F49DE193 /* CoreGraphics.framework */; };
 		D638FDBD8E1B42730BF21A96957E6333 /* MTFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BFE10A7959FFBB8BA79D95B188BF88E /* MTFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7BD219908E82FB0172EC968207DA53F /* MTTypesetter.h in Headers */ = {isa = PBXBuildFile; fileRef = EEDCFEA7C484A7EBE6A865738933C945 /* MTTypesetter.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D7D27E45B3C991BF009F9DA45040E32D /* NSColor+HexString.h in Headers */ = {isa = PBXBuildFile; fileRef = A950384C9C4F9891EE00AAEA608D7D0E /* NSColor+HexString.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDF7FE8E1BD267A3C40BCF279E383676 /* NSBezierPath+addLineToPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D02C5016BCD4DC84EE01D1B9CF10B42B /* NSBezierPath+addLineToPoint.m */; };
-		DE7DF10A8629F64D3BB6C5F9F2450BBD /* Pods-SciCal-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BED074F598BA970DBA0407B93F93F97 /* Pods-SciCal-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF8328E83B499955E1E720CF5CABD073 /* IosMath.h in Headers */ = {isa = PBXBuildFile; fileRef = C1DF891F6B1D6FE1A149E4BC59FADAAE /* IosMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E03E6526671FBEC932CDB823CF120C05 /* latinmodern-math.otf in Resources */ = {isa = PBXBuildFile; fileRef = 36B8783390C946CBA568A504967BD9F8 /* latinmodern-math.otf */; };
-		EE706440A98C73C4C4F172E24B4746B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF58CC92310C0395FBA5E5C639C12F03 /* Foundation.framework */; };
 		EF134C47FA11A70DB831CEF726F99C6B /* MTMathList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C085EEA0AF8EAABF271778FD51736FE /* MTMathList.m */; };
 		F3C49220F0A9F340CF968F2383991F88 /* MTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D48928AB846605439A73B252EFA0450 /* MTLabel.m */; };
 		F3E07CDB17F36B181258FEB75A790849 /* xits-math.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74FBFE8A9C7F23D83F5DC8A701967C85 /* xits-math.plist */; };
@@ -66,7 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		07098326A708D7E779EBC650A1EE2075 /* PBXContainerItemProxy */ = {
+		A8E28AD35EBCE1A37BE1D720BFBDA427 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -84,36 +81,32 @@
 
 /* Begin PBXFileReference section */
 		006AA4189B48F7556367BF3434DB108A /* MTFontManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTFontManager.h; path = iosMath/render/MTFontManager.h; sourceTree = "<group>"; };
-		09DF9D3E711B2B927BBBBBD9F9D9FDB6 /* Pods-SciCalTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SciCalTests-umbrella.h"; sourceTree = "<group>"; };
 		0A32FFB53B409A227F5A8B09AE896B72 /* UIColor+HexString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+HexString.h"; path = "iosMath/render/UIColor+HexString.h"; sourceTree = "<group>"; };
-		0B28BA800C259F863FFA1DCB4E39F951 /* Pods_SciCal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SciCal.framework; path = "Pods-SciCal.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D182B6066B855F50FB5D60B3307BCF6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D48928AB846605439A73B252EFA0450 /* MTLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLabel.m; path = iosMath/render/MTLabel.m; sourceTree = "<group>"; };
 		0F75FE559A8F315471E00FFD510A6CBF /* MTFontManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTFontManager.m; path = iosMath/render/MTFontManager.m; sourceTree = "<group>"; };
-		1778D3B935759759A840E29E09F29C77 /* Pods-SciCalTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SciCalTests.modulemap"; sourceTree = "<group>"; };
+		2219926537905195232B4F82A96EEA42 /* Pods-SciCal.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SciCal.modulemap"; sourceTree = "<group>"; };
 		230187C1090A327681A4A62839112FF4 /* iosMath.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = iosMath.modulemap; sourceTree = "<group>"; };
 		25A0CB1A25FF374EE6A8E29E3F30B569 /* MTMathListBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathListBuilder.h; path = iosMath/lib/MTMathListBuilder.h; sourceTree = "<group>"; };
 		28A227ECCEDA6F4773C7A1E1D59D31E7 /* xits-math.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "xits-math.otf"; path = "fonts/xits-math.otf"; sourceTree = "<group>"; };
 		2971E81F2DEA82F81157060E01EA5DAF /* MTLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLabel.h; path = iosMath/render/MTLabel.h; sourceTree = "<group>"; };
-		2AA76CDFCA0F2066092830C9C87D1A3E /* Pods-SciCalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SciCalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2C5ECFB3C1CC71D7B985B4E562BF2BC7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C81BC8AD278F40152C6B9A72287F763 /* MTFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTFont.m; path = iosMath/render/MTFont.m; sourceTree = "<group>"; };
 		2D94E9895B2E6B35EE097B4BAEB8434D /* iosMath-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iosMath-umbrella.h"; sourceTree = "<group>"; };
 		32E2B04BC1935A86EB34129AA71C7D83 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		32FF3CB75B6A2F384F8AE9C9CA5CF594 /* iosMath.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iosMath.xcconfig; sourceTree = "<group>"; };
-		35925D0D9AC726BA7F52F284680501C2 /* Pods-SciCal-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SciCal-frameworks.sh"; sourceTree = "<group>"; };
 		36B8783390C946CBA568A504967BD9F8 /* latinmodern-math.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "latinmodern-math.otf"; path = "fonts/latinmodern-math.otf"; sourceTree = "<group>"; };
 		37836B403584AA63E73822910E556DE1 /* MTUnicode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTUnicode.h; path = iosMath/lib/MTUnicode.h; sourceTree = "<group>"; };
 		39F41A7376ED9DBDE9751E686253D732 /* MTUnicode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTUnicode.m; path = iosMath/lib/MTUnicode.m; sourceTree = "<group>"; };
 		3BFE10A7959FFBB8BA79D95B188BF88E /* MTFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTFont.h; path = iosMath/render/MTFont.h; sourceTree = "<group>"; };
 		3D031BA9BF8BDF5EEAF80CEE09D177B5 /* NSColor+HexString.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSColor+HexString.m"; path = "iosMath/render/NSColor+HexString.m"; sourceTree = "<group>"; };
-		4B9A49A7E7FB51AB05AD519653E35B00 /* Pods-SciCalTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SciCalTests-resources.sh"; sourceTree = "<group>"; };
-		522FBA2112D1358AD43DA0E90930C138 /* Pods_SciCalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SciCalTests.framework; path = "Pods-SciCalTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A0579F9E3AFC3E92C668784F63994CC /* Pods-SciCal-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SciCal-acknowledgements.plist"; sourceTree = "<group>"; };
+		50FA3BD9A875D2ABDCDD928A521ED9D6 /* Pods-SciCal-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SciCal-umbrella.h"; sourceTree = "<group>"; };
+		51A2C9A6759A1AB188B84967F792838F /* iosMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = iosMath.framework; path = iosMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5310F1E7ACC96063E3E74FBCC063C17A /* ResourceBundle-mathFonts-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-mathFonts-Info.plist"; sourceTree = "<group>"; };
 		566EBF5421D338B0294CD7DBCC956B27 /* MTFont+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MTFont+Internal.h"; path = "iosMath/render/internal/MTFont+Internal.h"; sourceTree = "<group>"; };
-		56D8D1C7041C4028ECA31E57A42964D0 /* Pods-SciCal-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SciCal-resources.sh"; sourceTree = "<group>"; };
+		5C7D3045B398E24F610BD671B29C86DA /* Pods-SciCal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SciCal.debug.xcconfig"; sourceTree = "<group>"; };
 		5C91879E3F29B0A68E38EB10E50A9A3E /* MTMathList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathList.h; path = iosMath/lib/MTMathList.h; sourceTree = "<group>"; };
 		60C2E84FF6D0D8DC3E0A29346CFD68C1 /* MTMathListDisplayInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathListDisplayInternal.h; path = iosMath/render/internal/MTMathListDisplayInternal.h; sourceTree = "<group>"; };
-		64E4AD3EE9736FD8952AB33D0AB65330 /* Pods-SciCalTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SciCalTests-frameworks.sh"; sourceTree = "<group>"; };
 		681881A3C9C56F626961D3AAB75322F6 /* iosMath-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iosMath-prefix.pch"; sourceTree = "<group>"; };
 		6AAA313DA426E6E4BA7F53F2BD4E2217 /* MTMathListDisplay.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathListDisplay.m; path = iosMath/render/MTMathListDisplay.m; sourceTree = "<group>"; };
 		6E682FF06D4A710D4090D9426052A8EC /* MTMathListIndex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathListIndex.m; path = iosMath/lib/MTMathListIndex.m; sourceTree = "<group>"; };
@@ -121,39 +114,32 @@
 		74FBFE8A9C7F23D83F5DC8A701967C85 /* xits-math.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "xits-math.plist"; path = "fonts/xits-math.plist"; sourceTree = "<group>"; };
 		755549068AC82E532FF64B676A358129 /* MTMathListBuilder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathListBuilder.m; path = iosMath/lib/MTMathListBuilder.m; sourceTree = "<group>"; };
 		75724AFC8DB229902C200CFD229B7576 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		75DDB874F4320420EE3F72B2ABCF97DC /* Pods-SciCalTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SciCalTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		77DBD49BF4E71471666EFC58F2299521 /* Pods-SciCal-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SciCal-dummy.m"; sourceTree = "<group>"; };
 		79C73AF30D60E2D2B9474C5F20398F77 /* MTFontMathTable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTFontMathTable.h; path = iosMath/render/internal/MTFontMathTable.h; sourceTree = "<group>"; };
-		79FE50EF6B3C861879ECEC04DFC690BF /* Pods-SciCal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SciCal.debug.xcconfig"; sourceTree = "<group>"; };
-		7B42206F8C7B23F54B9A6CD005976785 /* Pods-SciCalTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SciCalTests-dummy.m"; sourceTree = "<group>"; };
+		7B260BAF1DAD58227FCD1A166B484E4B /* Pods-SciCal-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SciCal-dummy.m"; sourceTree = "<group>"; };
 		7C085EEA0AF8EAABF271778FD51736FE /* MTMathList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathList.m; path = iosMath/lib/MTMathList.m; sourceTree = "<group>"; };
 		7C2DD1CC1BEC006C3CC72D41A2C4B070 /* MTMathAtomFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathAtomFactory.h; path = iosMath/lib/MTMathAtomFactory.h; sourceTree = "<group>"; };
-		7C565D4DD232E4CC75B2C96E51EEAA81 /* iosMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = iosMath.framework; path = iosMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E4EE262349108144307D042F49DE193 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		804B17ED518DD18876F6F1A6F6DB5F51 /* NSBezierPath+addLineToPoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+addLineToPoint.h"; path = "iosMath/render/NSBezierPath+addLineToPoint.h"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9BED074F598BA970DBA0407B93F93F97 /* Pods-SciCal-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SciCal-umbrella.h"; sourceTree = "<group>"; };
-		9D7F58AC40723B9BD81DDDDF571AE67D /* mathFonts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = mathFonts.bundle; path = mathFonts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		9E82F79DA3452C12CD8F560CF29F4A0E /* Pods-SciCalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SciCalTests.release.xcconfig"; sourceTree = "<group>"; };
-		A7C26F97A4A714607EA0037F195928C4 /* Pods-SciCal.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SciCal.modulemap"; sourceTree = "<group>"; };
+		98CC3453190F28D52170F5E3791AC488 /* Pods-SciCal-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SciCal-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9A63ECFE4C8C881BA6EFE4C5ABA88D1F /* Pods-SciCal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SciCal.release.xcconfig"; sourceTree = "<group>"; };
+		A0CB6E84B93E70ACD96C92A957B873CD /* Pods-SciCal-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SciCal-frameworks.sh"; sourceTree = "<group>"; };
 		A950384C9C4F9891EE00AAEA608D7D0E /* NSColor+HexString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSColor+HexString.h"; path = "iosMath/render/NSColor+HexString.h"; sourceTree = "<group>"; };
 		AC6DA6A592DDDF15255C08563179D8AC /* MTMathListIndex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathListIndex.h; path = iosMath/lib/MTMathListIndex.h; sourceTree = "<group>"; };
+		AE672F623929AC44F6E2A25641B4FA79 /* mathFonts.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = mathFonts.bundle; path = mathFonts.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFFC6A39CA7864E84699E7C3D925EBCC /* texgyretermes-math.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "texgyretermes-math.plist"; path = "fonts/texgyretermes-math.plist"; sourceTree = "<group>"; };
-		B6A05843E9783E2AA54E46B8407B9CB6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEF8598E701EDC0F30AF74D248B66CCD /* Pods-SciCal-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SciCal-resources.sh"; sourceTree = "<group>"; };
 		C00A3BE28BF09626B3CC8C27FD634B53 /* MTMathUILabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTMathUILabel.m; path = iosMath/render/MTMathUILabel.m; sourceTree = "<group>"; };
 		C1DF891F6B1D6FE1A149E4BC59FADAAE /* IosMath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IosMath.h; path = iosMath/IosMath.h; sourceTree = "<group>"; };
+		C35539DEACE0EF910219DE192BBC455C /* Pods_SciCal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SciCal.framework; path = "Pods-SciCal.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41CA90F32773FFEB76A7EE31B85D139 /* NSView+backgroundColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSView+backgroundColor.h"; path = "iosMath/render/NSView+backgroundColor.h"; sourceTree = "<group>"; };
 		C99602F84205D94A5510DAD2618D5FD0 /* texgyretermes-math.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = "texgyretermes-math.otf"; path = "fonts/texgyretermes-math.otf"; sourceTree = "<group>"; };
 		D02C5016BCD4DC84EE01D1B9CF10B42B /* NSBezierPath+addLineToPoint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBezierPath+addLineToPoint.m"; path = "iosMath/render/NSBezierPath+addLineToPoint.m"; sourceTree = "<group>"; };
 		D506FFC36684B5DFE599E11455AC5E61 /* iosMath-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iosMath-dummy.m"; sourceTree = "<group>"; };
 		D5F4F75905778168F7F8B3FF09C214D2 /* MTConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTConfig.h; path = iosMath/render/MTConfig.h; sourceTree = "<group>"; };
-		D7E6A059AB5652C486C86BA1AA2EFAC2 /* Pods-SciCalTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SciCalTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		DA5B0609A3168EE982198789B866ECA0 /* Pods-SciCal-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SciCal-acknowledgements.markdown"; sourceTree = "<group>"; };
 		DD3DD637947A66BC392587A8F25C5366 /* MTFontMathTable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTFontMathTable.m; path = iosMath/render/internal/MTFontMathTable.m; sourceTree = "<group>"; };
 		DE53BD7C967D552B241746F9AE176F32 /* UIColor+HexString.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HexString.m"; path = "iosMath/render/UIColor+HexString.m"; sourceTree = "<group>"; };
-		E43788834089EE86BB845BBA7BF66AF4 /* Pods-SciCal-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SciCal-acknowledgements.plist"; sourceTree = "<group>"; };
 		E6A9ECAC9FB373744BDE1C3ADC8526C5 /* MTMathUILabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTMathUILabel.h; path = iosMath/render/MTMathUILabel.h; sourceTree = "<group>"; };
-		ED996FCC9AD592E7A172414ACA38F6DB /* Pods-SciCal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SciCal.release.xcconfig"; sourceTree = "<group>"; };
 		EEDCFEA7C484A7EBE6A865738933C945 /* MTTypesetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTTypesetter.h; path = iosMath/render/internal/MTTypesetter.h; sourceTree = "<group>"; };
 		F0F85ABB5FC8E5C025806B46C439FC0E /* latinmodern-math.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "latinmodern-math.plist"; path = "fonts/latinmodern-math.plist"; sourceTree = "<group>"; };
 		F28EC1222F0A7C1E8F6B470441CAB6DB /* MTTypesetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTTypesetter.m; path = iosMath/render/internal/MTTypesetter.m; sourceTree = "<group>"; };
@@ -177,14 +163,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3E080B6D37BF05D4F20BE51DD416B222 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				67AAA4B30DEE5E0459315EAE147D08A2 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		97F194C56E44F6A9EE08F8E324E69F03 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -192,17 +170,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D6658E20C9F17264A6944884BD43053F /* Frameworks */ = {
+		C17D62EC7A39DD58A44CAFD4691664D5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE706440A98C73C4C4F172E24B4746B0 /* Foundation.framework in Frameworks */,
+				C2B32675F71BA192D3ECD1FA9F569B04 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D17EC53F99DA1F8F3CF992F33DB50F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				51A2C9A6759A1AB188B84967F792838F /* iosMath.framework */,
+				AE672F623929AC44F6E2A25641B4FA79 /* mathFonts.bundle */,
+				C35539DEACE0EF910219DE192BBC455C /* Pods_SciCal.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		20B56609144CE204DFA8221F742B2D76 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,40 +258,21 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		564917FF751568558F804B647979A9E2 /* Pods-SciCalTests */ = {
-			isa = PBXGroup;
-			children = (
-				B6A05843E9783E2AA54E46B8407B9CB6 /* Info.plist */,
-				1778D3B935759759A840E29E09F29C77 /* Pods-SciCalTests.modulemap */,
-				D7E6A059AB5652C486C86BA1AA2EFAC2 /* Pods-SciCalTests-acknowledgements.markdown */,
-				75DDB874F4320420EE3F72B2ABCF97DC /* Pods-SciCalTests-acknowledgements.plist */,
-				7B42206F8C7B23F54B9A6CD005976785 /* Pods-SciCalTests-dummy.m */,
-				64E4AD3EE9736FD8952AB33D0AB65330 /* Pods-SciCalTests-frameworks.sh */,
-				4B9A49A7E7FB51AB05AD519653E35B00 /* Pods-SciCalTests-resources.sh */,
-				09DF9D3E711B2B927BBBBBD9F9D9FDB6 /* Pods-SciCalTests-umbrella.h */,
-				2AA76CDFCA0F2066092830C9C87D1A3E /* Pods-SciCalTests.debug.xcconfig */,
-				9E82F79DA3452C12CD8F560CF29F4A0E /* Pods-SciCalTests.release.xcconfig */,
-			);
-			name = "Pods-SciCalTests";
-			path = "Target Support Files/Pods-SciCalTests";
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				20B56609144CE204DFA8221F742B2D76 /* Frameworks */,
 				BD8939ADB469941D328BDF396BE11D11 /* Pods */,
-				F76E66CFF4A6082C5DF7C432BCE3F121 /* Products */,
-				8135DB8D92703205E66988DE80341205 /* Targets Support Files */,
+				0D17EC53F99DA1F8F3CF992F33DB50F9 /* Products */,
+				85B5CCCC36773F2649890B9633B0BB17 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8135DB8D92703205E66988DE80341205 /* Targets Support Files */ = {
+		85B5CCCC36773F2649890B9633B0BB17 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				B5A48DD349BF27BF898B339C1C96739F /* Pods-SciCal */,
-				564917FF751568558F804B647979A9E2 /* Pods-SciCalTests */,
+				FADAAE25D68572655AF9DB11B88FB4E5 /* Pods-SciCal */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
@@ -323,24 +292,6 @@
 			path = "../Target Support Files/iosMath";
 			sourceTree = "<group>";
 		};
-		B5A48DD349BF27BF898B339C1C96739F /* Pods-SciCal */ = {
-			isa = PBXGroup;
-			children = (
-				0D182B6066B855F50FB5D60B3307BCF6 /* Info.plist */,
-				A7C26F97A4A714607EA0037F195928C4 /* Pods-SciCal.modulemap */,
-				DA5B0609A3168EE982198789B866ECA0 /* Pods-SciCal-acknowledgements.markdown */,
-				E43788834089EE86BB845BBA7BF66AF4 /* Pods-SciCal-acknowledgements.plist */,
-				77DBD49BF4E71471666EFC58F2299521 /* Pods-SciCal-dummy.m */,
-				35925D0D9AC726BA7F52F284680501C2 /* Pods-SciCal-frameworks.sh */,
-				56D8D1C7041C4028ECA31E57A42964D0 /* Pods-SciCal-resources.sh */,
-				9BED074F598BA970DBA0407B93F93F97 /* Pods-SciCal-umbrella.h */,
-				79FE50EF6B3C861879ECEC04DFC690BF /* Pods-SciCal.debug.xcconfig */,
-				ED996FCC9AD592E7A172414ACA38F6DB /* Pods-SciCal.release.xcconfig */,
-			);
-			name = "Pods-SciCal";
-			path = "Target Support Files/Pods-SciCal";
-			sourceTree = "<group>";
-		};
 		BD8939ADB469941D328BDF396BE11D11 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,15 +300,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F76E66CFF4A6082C5DF7C432BCE3F121 /* Products */ = {
+		FADAAE25D68572655AF9DB11B88FB4E5 /* Pods-SciCal */ = {
 			isa = PBXGroup;
 			children = (
-				7C565D4DD232E4CC75B2C96E51EEAA81 /* iosMath.framework */,
-				9D7F58AC40723B9BD81DDDDF571AE67D /* mathFonts.bundle */,
-				0B28BA800C259F863FFA1DCB4E39F951 /* Pods_SciCal.framework */,
-				522FBA2112D1358AD43DA0E90930C138 /* Pods_SciCalTests.framework */,
+				2C5ECFB3C1CC71D7B985B4E562BF2BC7 /* Info.plist */,
+				2219926537905195232B4F82A96EEA42 /* Pods-SciCal.modulemap */,
+				98CC3453190F28D52170F5E3791AC488 /* Pods-SciCal-acknowledgements.markdown */,
+				4A0579F9E3AFC3E92C668784F63994CC /* Pods-SciCal-acknowledgements.plist */,
+				7B260BAF1DAD58227FCD1A166B484E4B /* Pods-SciCal-dummy.m */,
+				A0CB6E84B93E70ACD96C92A957B873CD /* Pods-SciCal-frameworks.sh */,
+				BEF8598E701EDC0F30AF74D248B66CCD /* Pods-SciCal-resources.sh */,
+				50FA3BD9A875D2ABDCDD928A521ED9D6 /* Pods-SciCal-umbrella.h */,
+				5C7D3045B398E24F610BD671B29C86DA /* Pods-SciCal.debug.xcconfig */,
+				9A63ECFE4C8C881BA6EFE4C5ABA88D1F /* Pods-SciCal.release.xcconfig */,
 			);
-			name = Products;
+			name = "Pods-SciCal";
+			path = "Target Support Files/Pods-SciCal";
 			sourceTree = "<group>";
 		};
 		FD3B6667F06509663DDD01426DEE151E /* iOS */ = {
@@ -403,40 +361,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8B8E151AA1C48D8121E8C22EAA82B5F0 /* Headers */ = {
+		CDEE4F96AAD3E72BB54B4979DEE7587F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE7DF10A8629F64D3BB6C5F9F2450BBD /* Pods-SciCal-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DD6EA76144527D31DE368C65A16BDB8C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				865EB5F29A8AA8199CB99E8008C977E0 /* Pods-SciCalTests-umbrella.h in Headers */,
+				3739BDDC165F79AC9DF19DE9C128B19F /* Pods-SciCal-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		76F5135E37995629DE9614CC1A9E2289 /* Pods-SciCal */ = {
+		726120305CF2979E73F7FCE5204A2F7A /* Pods-SciCal */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 99538EA8D237B2F9538E8E58098EAFCD /* Build configuration list for PBXNativeTarget "Pods-SciCal" */;
+			buildConfigurationList = 4E320CB525D19DC0F237260428B3A741 /* Build configuration list for PBXNativeTarget "Pods-SciCal" */;
 			buildPhases = (
-				06827E3DCE86FDE3A907A9DE430E602F /* Sources */,
-				3E080B6D37BF05D4F20BE51DD416B222 /* Frameworks */,
-				8B8E151AA1C48D8121E8C22EAA82B5F0 /* Headers */,
+				C3F8792175E66F044C2A03AD83E7E719 /* Sources */,
+				C17D62EC7A39DD58A44CAFD4691664D5 /* Frameworks */,
+				CDEE4F96AAD3E72BB54B4979DEE7587F /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				24823336B28FD67FEE4AEF43956EF553 /* PBXTargetDependency */,
 			);
 			name = "Pods-SciCal";
 			productName = "Pods-SciCal";
-			productReference = 0B28BA800C259F863FFA1DCB4E39F951 /* Pods_SciCal.framework */;
+			productReference = C35539DEACE0EF910219DE192BBC455C /* Pods_SciCal.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9B9836C06662F6AF26CF13501848D275 /* iosMath-mathFonts */ = {
@@ -453,7 +404,7 @@
 			);
 			name = "iosMath-mathFonts";
 			productName = "iosMath-mathFonts";
-			productReference = 9D7F58AC40723B9BD81DDDDF571AE67D /* mathFonts.bundle */;
+			productReference = AE672F623929AC44F6E2A25641B4FA79 /* mathFonts.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		E5B2F702A8B0B2E4FE2AF5DD816057E7 /* iosMath */ = {
@@ -472,25 +423,7 @@
 			);
 			name = iosMath;
 			productName = iosMath;
-			productReference = 7C565D4DD232E4CC75B2C96E51EEAA81 /* iosMath.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		EC65A1B4CBD15ABD3B7E8313286FFD5A /* Pods-SciCalTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1456DEEA7314780B4308EB79CC3BB18F /* Build configuration list for PBXNativeTarget "Pods-SciCalTests" */;
-			buildPhases = (
-				585A2DBCB5069BEC27C157172F327D6F /* Sources */,
-				D6658E20C9F17264A6944884BD43053F /* Frameworks */,
-				DD6EA76144527D31DE368C65A16BDB8C /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F54C964CB59A03E81639773A4C2116CE /* PBXTargetDependency */,
-			);
-			name = "Pods-SciCalTests";
-			productName = "Pods-SciCalTests";
-			productReference = 522FBA2112D1358AD43DA0E90930C138 /* Pods_SciCalTests.framework */;
+			productReference = 51A2C9A6759A1AB188B84967F792838F /* iosMath.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -510,14 +443,13 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = F76E66CFF4A6082C5DF7C432BCE3F121 /* Products */;
+			productRefGroup = 0D17EC53F99DA1F8F3CF992F33DB50F9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				E5B2F702A8B0B2E4FE2AF5DD816057E7 /* iosMath */,
 				9B9836C06662F6AF26CF13501848D275 /* iosMath-mathFonts */,
-				76F5135E37995629DE9614CC1A9E2289 /* Pods-SciCal */,
-				EC65A1B4CBD15ABD3B7E8313286FFD5A /* Pods-SciCalTests */,
+				726120305CF2979E73F7FCE5204A2F7A /* Pods-SciCal */,
 			);
 		};
 /* End PBXProject section */
@@ -547,14 +479,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		06827E3DCE86FDE3A907A9DE430E602F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B111EE6456B9BFE7F2978BBC7F299572 /* Pods-SciCal-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1D76559F2C773EA0A1F07D58D7AC9B26 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -586,28 +510,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		585A2DBCB5069BEC27C157172F327D6F /* Sources */ = {
+		C3F8792175E66F044C2A03AD83E7E719 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A59C02DE08E20B5784A2D5118229376 /* Pods-SciCalTests-dummy.m in Sources */,
+				2C57F109091542A3138872E777FEEE58 /* Pods-SciCal-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		24823336B28FD67FEE4AEF43956EF553 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iosMath;
+			target = E5B2F702A8B0B2E4FE2AF5DD816057E7 /* iosMath */;
+			targetProxy = A8E28AD35EBCE1A37BE1D720BFBDA427 /* PBXContainerItemProxy */;
+		};
 		24C1EDAFEC84D6491EDA0F47B572CF1E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "iosMath-mathFonts";
 			target = 9B9836C06662F6AF26CF13501848D275 /* iosMath-mathFonts */;
 			targetProxy = DDF7C1A1C905720CE4A49027041AB104 /* PBXContainerItemProxy */;
-		};
-		F54C964CB59A03E81639773A4C2116CE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = iosMath;
-			target = E5B2F702A8B0B2E4FE2AF5DD816057E7 /* iosMath */;
-			targetProxy = 07098326A708D7E779EBC650A1EE2075 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -646,45 +570,9 @@
 			};
 			name = Release;
 		};
-		1013061EF86A6BED618F6F193273F86B /* Release */ = {
+		463DD35E21A59831CC85ADF2AE3CD804 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E82F79DA3452C12CD8F560CF29F4A0E /* Pods-SciCalTests.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SciCalTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SciCalTests/Pods-SciCalTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SciCalTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		530903A13850A7DEB1C2204B2B58C378 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2AA76CDFCA0F2066092830C9C87D1A3E /* Pods-SciCalTests.debug.xcconfig */;
+			baseConfigurationReference = 5C7D3045B398E24F610BD671B29C86DA /* Pods-SciCal.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -698,18 +586,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SciCalTests/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-SciCal/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SciCalTests/Pods-SciCalTests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-SciCal/Pods-SciCal.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SciCalTests;
+				PRODUCT_NAME = Pods_SciCal;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -732,42 +620,6 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		8CFC3FDEB2C15625A2EDBC9AD8CFF91C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED996FCC9AD592E7A172414ACA38F6DB /* Pods-SciCal.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SciCal/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SciCal/Pods-SciCal.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SciCal;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -854,6 +706,42 @@
 			};
 			name = Debug;
 		};
+		AB21171D795FA43FA3DFA62E8E3F7BBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A63ECFE4C8C881BA6EFE4C5ABA88D1F /* Pods-SciCal.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SciCal/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SciCal/Pods-SciCal.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SciCal;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		B52A53A5917AB20DEA561C4A97E1D98A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 32FF3CB75B6A2F384F8AE9C9CA5CF594 /* iosMath.xcconfig */;
@@ -915,54 +803,9 @@
 			};
 			name = Release;
 		};
-		DB9B6DA3BC2AEC69303957B4C5B901E6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79FE50EF6B3C861879ECEC04DFC690BF /* Pods-SciCal.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SciCal/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SciCal/Pods-SciCal.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SciCal;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1456DEEA7314780B4308EB79CC3BB18F /* Build configuration list for PBXNativeTarget "Pods-SciCalTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				530903A13850A7DEB1C2204B2B58C378 /* Debug */,
-				1013061EF86A6BED618F6F193273F86B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -981,20 +824,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		4E320CB525D19DC0F237260428B3A741 /* Build configuration list for PBXNativeTarget "Pods-SciCal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				463DD35E21A59831CC85ADF2AE3CD804 /* Debug */,
+				AB21171D795FA43FA3DFA62E8E3F7BBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		872852C40DED47C7FE74D31A551F490A /* Build configuration list for PBXNativeTarget "iosMath-mathFonts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B52A53A5917AB20DEA561C4A97E1D98A /* Debug */,
 				740287662233BE97CB0C53D259816F0F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		99538EA8D237B2F9538E8E58098EAFCD /* Build configuration list for PBXNativeTarget "Pods-SciCal" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DB9B6DA3BC2AEC69303957B4C5B901E6 /* Debug */,
-				8CFC3FDEB2C15625A2EDBC9AD8CFF91C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
