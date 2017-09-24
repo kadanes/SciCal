@@ -36,8 +36,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var baseNEqualTo: UIButton!
     
+    @IBOutlet weak var expressionView: UIView!
     
-  
+    @IBOutlet weak var mainScreenStackView: UIStackView!
+    
     var operationFlag: Bool = false
     var decimalFlag: Bool = false
     var openingBracketFlag: Bool = false
@@ -204,19 +206,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
+        
         mainScreen.delegate = self
         mainScreen.inputView = UIView()
         mainScreen.becomeFirstResponder()
         
-        label.latex =  "x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}"
-        label.textColor = UIColor.white
-        
-        label.frame = CGRect.init(x: 0.0, y: 0.0, width: 200.0, height: 100.0)
-        
-        
-        mainScreen.addSubview(label)
-        
+        //renderMathEquation()
     }
     
     @IBAction func primaryButtonPressed(_ sender: UIButton){
@@ -597,6 +592,28 @@ class ViewController: UIViewController, UITextFieldDelegate {
         default: break
             
         }
+    }
+    
+    func renderMathEquation() {
+        
+        mainScreenStackView.isHidden = true
+        expressionView.isHidden = false
+        
+        label.latex =  "x = \\frac{\\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}\\times54+10}{\\frac{100}{10}}\\times10000"
+        label.fontSize = 45.0
+        label.textColor = UIColor.white
+        
+        let expressionScrollView = UIScrollView(frame: expressionView.bounds)
+        
+        expressionScrollView.contentSize = CGSize(width: label.intrinsicContentSize.width, height: label.intrinsicContentSize.height)
+        
+        expressionScrollView.addSubview(label)
+        
+        label.frame = CGRect(x: 0.0, y: 0.0, width: label.intrinsicContentSize.width, height: label.intrinsicContentSize.height)
+        
+        expressionScrollView.isScrollEnabled = true
+        
+        expressionView.addSubview(expressionScrollView)
     }
 }
 
