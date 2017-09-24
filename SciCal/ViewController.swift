@@ -52,7 +52,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let converter = BaseConverter()
     
     let label =  MTMathUILabel()
-    
+    let labelCursor = MTMathUILabel()
     
     
     
@@ -211,7 +211,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         mainScreen.inputView = UIView()
         mainScreen.becomeFirstResponder()
         
-        //renderMathEquation()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        renderMathEquation()
     }
     
     @IBAction func primaryButtonPressed(_ sender: UIButton){
@@ -599,21 +604,47 @@ class ViewController: UIViewController, UITextFieldDelegate {
         mainScreenStackView.isHidden = true
         expressionView.isHidden = false
         
-        label.latex =  "x = \\frac{\\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}\\times54+10}{\\frac{100}{10}}\\times10000"
-        label.fontSize = 45.0
+        label.latex =  "x = \\frac{\\frac{-b \\pm \\sqrt{b^2-\\;\\;4ac}}{2a}\\times54+10}{\\frac{100}{10}}\\times10000"
+        labelCursor.latex = "x = \\frac{\\frac{-b \\pm \\sqrt{b^2-\\wr\\;4ac}}{2a}\\times54+10}{\\frac{100}{10}}\\times10000"
+        label.fontSize = 40.0
+        labelCursor.fontSize = 40.0
         label.textColor = UIColor.white
+        labelCursor.textColor = UIColor.black
         
         let expressionScrollView = UIScrollView(frame: expressionView.bounds)
-        
-        expressionScrollView.contentSize = CGSize(width: label.intrinsicContentSize.width, height: label.intrinsicContentSize.height)
-        
-        expressionScrollView.addSubview(label)
-        
-        label.frame = CGRect(x: 0.0, y: 0.0, width: label.intrinsicContentSize.width, height: label.intrinsicContentSize.height)
-        
         expressionScrollView.isScrollEnabled = true
         
+        
+        
+        expressionScrollView.contentSize = CGSize(width: label.intrinsicContentSize.width + 5.0, height: label.intrinsicContentSize.height + 5.0 )
+        
+        expressionScrollView.addSubview(labelCursor)
+        labelCursor.frame = CGRect(x: 5.0 , y: 5.0, width: labelCursor.intrinsicContentSize.width, height: labelCursor.intrinsicContentSize.height)
+        
+        expressionScrollView.addSubview(label)
+        label.frame = CGRect(x: 5.0, y: 5.1, width: label.intrinsicContentSize.width, height: label.intrinsicContentSize.height)
+   
         expressionView.addSubview(expressionScrollView)
+    
+        let subviews = expressionScrollView.subviews
+        subviews[0].isHidden = true
+//        while true {
+//            if subviews[0].isHidden {
+//                print("Showing")
+//              subviews[0].isHidden = false
+//            } else {
+//                
+//                subviews[0].isHidden = true
+//                print("Hiding")
+//            }
+//        }
+        
+        
+        //expressionView.addSubview(expressionScrollView)
+        
+        
+        
+       
     }
 }
 
