@@ -49,11 +49,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var runs = 0
     var latexString = ""
     
+    var cursorIndex = 0
+    var literalCount = 0
+    var labelLatixSize: CGSize!
+    var cursorLatixSize: CGSize!
+    
     let converter = BaseConverter()
     
     let label =  MTMathUILabel()
     let labelCursor = MTMathUILabel()
-    
     
     
     @IBAction func pressedA(_ sender: Any) {
@@ -211,17 +215,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
         mainScreen.inputView = UIView()
         mainScreen.becomeFirstResponder()
         
+        labelCursor.latex = "\\wr"
+        label.latex = "\\;"
+        updateLatex(token: " ")
         
+        renderMathEquation()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        renderMathEquation()
+        //renderMathEquation()
     }
     
     @IBAction func primaryButtonPressed(_ sender: UIButton){
         
         let btnValue = sender.tag
+        
+        updateLatex(token: "\(btnValue)")
         
         if calculationMode == 0 {
             
@@ -459,6 +469,50 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    func updateLatex(token: String) {
+        
+        if token != "cursor" {
+            let insertToken = Character(token)
+            
+            
+            label.latex?.insert(insertToken, at: (label.latex?.index((label.latex?.startIndex)!, offsetBy: cursorIndex))!)
+            
+            labelCursor.latex?.insert(insertToken, at: (label.latex?.index((labelCursor.latex?.startIndex)!, offsetBy: cursorIndex))!)
+            
+            cursorIndex += 1
+            
+            labelLatixSize = label.intrinsicContentSize
+            cursorLatixSize = labelCursor.intrinsicContentSize
+            
+            literalCount += 1
+            
+            renderMathEquation()
+            
+        } else {
+            
+           labelCursor.latex = labelCursor.latex?.replacingOccurrences(of: "\\wr", with: "")
+            label.latex = label.latex?.replacingOccurrences(of: "\\;", with: "")
+            
+            //print(labelCursor.latex,"New: ",new)
+            
+            label.latex?.insert("\\", at: (label.latex?.index((label.latex?.startIndex)!, offsetBy: cursorIndex))!)
+            labelCursor.latex?.insert("\\", at: (label.latex?.index((labelCursor.latex?.startIndex)!, offsetBy: cursorIndex))!)
+            
+            label.latex?.insert(";", at: (label.latex?.index((label.latex?.startIndex)!, offsetBy: cursorIndex + 1))!)
+            labelCursor.latex?.insert("w", at: (label.latex?.index((labelCursor.latex?.startIndex)!, offsetBy: cursorIndex + 1))!)
+            
+            labelCursor.latex?.insert("r", at: (label.latex?.index((labelCursor.latex?.startIndex)!, offsetBy: cursorIndex + 2))!)
+            
+            print("Cursor lable:",labelCursor.latex)
+            
+            print("Lable: \(label.latex)")
+            renderMathEquation()
+        }
+        
+        
+    }
+    
+    
     @IBAction func didPanKeyboard(_ sender: UIPanGestureRecognizer) {
         
         let maxRuns = 10
@@ -501,7 +555,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                 
                                 mainScreen.selectedTextRange = resetCharacterRange
                                 
+                                if cursorIndex > 0 && runs > maxRuns {
+                                    cursorIndex -= 1
+                                    updateLatex(token: "cursor")
+                                }
+                                
+                                
                                 if remainingCharacters > 0 && runs > maxRuns {
+                                    
+                                    
+                                    
                                     
                                     AudioServicesPlaySystemSound(1519)
                                     
@@ -517,6 +580,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                 } else {
+                
+               
                 
                 runs += 1
                 if let innitialCursorPositon = mainScreen.selectedTextRange?.start {
@@ -535,6 +600,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
                             let resetCharacterRange = mainScreen.textRange(from: beginingOfCursor, to: beginingOfCursor)
                             
                             mainScreen.selectedTextRange = resetCharacterRange
+                            
+                            if cursorIndex < literalCount && runs > maxRuns {
+                                cursorIndex += 1
+                                updateLatex(token: "cursor")
+                            }
                             
                             if remainingCharacters > 0 && runs > maxRuns {
                                 
@@ -599,13 +669,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func removeView(scren: UIView){
+        
+        let views = scren.subviews
+        
+        if views.indices.contains(0) {
+             views[0].removeFromSuperview()
+            print("Removing")
+        }
+    }
+    
+    
     func renderMathEquation() {
+        
+        
         
         mainScreenStackView.isHidden = true
         expressionView.isHidden = false
         
-        label.latex =  "x = \\frac{\\frac{-b \\pm \\sqrt{b^2-\\;\\;4ac}}{2a}\\times54+10}{\\frac{100}{10}}\\times10000"
-        labelCursor.latex = "x = \\frac{\\frac{-b \\pm \\sqrt{b^2-\\wr\\;4ac}}{2a}\\times54+10}{\\frac{100}{10}}\\times10000"
+        removeView(scren: expressionView)
+        
+        //label.latex =  "x = \\frac{\\frac{-b \\pm \\sqrt{b^2-\\;4ac}}{2a}\\times54+10}{\\frac{100}{10}}\\times10000"
+        //labelCursor.latex = "x = \\frac{\\frac{-b \\pm \\sqrt{b^2-\\wr4ac}}{2a}\\times54+10}{\\frac{100}{10}}\\times10000"
+        
         label.fontSize = 40.0
         labelCursor.fontSize = 40.0
         label.textColor = UIColor.white
@@ -616,35 +702,34 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         
         
-        expressionScrollView.contentSize = CGSize(width: label.intrinsicContentSize.width + 5.0, height: label.intrinsicContentSize.height + 5.0 )
+        expressionScrollView.contentSize = CGSize(width: labelLatixSize.width + 5.0, height: labelLatixSize.height + 5.0 )
         
         expressionScrollView.addSubview(labelCursor)
-        labelCursor.frame = CGRect(x: 5.0 , y: 5.0, width: labelCursor.intrinsicContentSize.width, height: labelCursor.intrinsicContentSize.height)
+        //labelCursor.frame = CGRect(x: 4.5 , y: 5.9, width: labelCursor.intrinsicContentSize.width, height: labelCursor.intrinsicContentSize.height)
+        labelCursor.frame = CGRect(x: 4.5 , y: 5.9, width: cursorLatixSize.width, height: cursorLatixSize.height)
         
         expressionScrollView.addSubview(label)
-        label.frame = CGRect(x: 5.0, y: 5.1, width: label.intrinsicContentSize.width, height: label.intrinsicContentSize.height)
-   
+        //label.frame = CGRect(x: 5.0, y: 5.0, width: label.intrinsicContentSize.width, height: label.intrinsicContentSize.height)
+        label.frame = CGRect(x: 5.0, y: 5.0, width: labelLatixSize.width, height: labelLatixSize.height)
+        
         expressionView.addSubview(expressionScrollView)
     
         let subviews = expressionScrollView.subviews
-        subviews[0].isHidden = true
-//        while true {
-//            if subviews[0].isHidden {
-//                print("Showing")
-//              subviews[0].isHidden = false
-//            } else {
-//                
-//                subviews[0].isHidden = true
-//                print("Hiding")
-//            }
-//        }
         
+        func sayHello(T: Timer)
+        {
+            if subviews[0].isHidden {
+                //print("Showing")
+                subviews[0].isHidden = false
+            } else {
+                
+                subviews[0].isHidden = true
+                //print("Hiding")
+            }
+        }
+    
+        _ = Timer.scheduledTimer(withTimeInterval: 0.40, repeats: true, block: sayHello(T:))
         
-        //expressionView.addSubview(expressionScrollView)
-        
-        
-        
-       
     }
 }
 
