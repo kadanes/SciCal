@@ -58,154 +58,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     let label =  MTMathUILabel()
     let labelCursor = MTMathUILabel()
+    var expressionScrollView : UIScrollView!
     
-    
-    @IBAction func pressedA(_ sender: Any) {
-        if calculationMode == 1 && baseValue == 16 {
-            updateMainScreen(input: "A")
-             AudioServicesPlaySystemSound(1520)
-        }
-    }
-    
-    @IBAction func pressedB(_ sender: Any) {
-        if calculationMode == 1 && baseValue == 16 {
-            updateMainScreen(input: "B")
-             AudioServicesPlaySystemSound(1520)
-        }
-    }
    
-    @IBAction func pressedC(_ sender: Any) {
-        
-        if calculationMode == 1 && baseValue == 16 {
-          updateMainScreen(input: "C")
-             AudioServicesPlaySystemSound(1520)
-        }
-        
-    }
-    @IBAction func pressedD(_ sender: Any) {
-        if calculationMode == 1 && baseValue == 16 {
-            updateMainScreen(input: "D")
-             AudioServicesPlaySystemSound(1520)
-        }
-    }
-    @IBAction func pressedE(_ sender: Any) {
-        if calculationMode == 1 && baseValue == 16 {
-            updateMainScreen(input: "E")
-             AudioServicesPlaySystemSound(1520)
-        }
-    }
-    @IBAction func pressedF(_ sender: Any) {
-        if calculationMode == 1 && baseValue == 16 {
-            updateMainScreen(input: "F")
-             AudioServicesPlaySystemSound(1520)
-        }
-    }
-    @IBAction func pressedMultiply(_ sender: UIButton) {
-        if !operationFlag{
-            updateMainScreen(input: " * ")
-            operationFlag = true
-            decimalFlag = false
-            operationFlag = false
-            openingBracketFlag = false
-            closingBracketFlag = true
-             AudioServicesPlaySystemSound(1520)
-        }
-        
-    }
-    @IBAction func pressedDivide(_ sender: UIButton) {
-        if !operationFlag{
-            updateMainScreen(input: " / ")
-            operationFlag = true
-            decimalFlag = false
-            openingBracketFlag = false
-            closingBracketFlag = true
-             AudioServicesPlaySystemSound(1520)
-        }
-    }
-    @IBAction func pressedPlus(_ sender: UIButton) {
-        if !operationFlag{
-            updateMainScreen(input: " + ")
-            operationFlag = true
-            decimalFlag = false
-            openingBracketFlag = false
-            closingBracketFlag = true
-             AudioServicesPlaySystemSound(1520)
-        }
-    }
-    @IBAction func pressedMinus(_ sender: UIButton) {
-        if !operationFlag{
-            updateMainScreen(input: " - ")
-            operationFlag = true
-            decimalFlag = false
-            openingBracketFlag = false
-            closingBracketFlag = true
-             AudioServicesPlaySystemSound(1520)
-        }
-    }
-    @IBAction func pressedOpeningBracket(_ sender: UIButton) {
-        if !openingBracketFlag {
-            updateMainScreen(input: "( ")
-             AudioServicesPlaySystemSound(1520)
-        }
-        
-    }
-    @IBAction func pressedOpeningClosing(_ sender: UIButton) {
-        if !closingBracketFlag {
-            updateMainScreen(input: " )")
-             AudioServicesPlaySystemSound(1520)
-        }
-        
-    }
-    
-    @IBAction func pressedDecimalPoint(_ sender: Any) {
-        if !decimalFlag {
-            updateMainScreen(input: ".")
-            decimalFlag = true
-            operationFlag = true
-            closingBracketFlag = true
-            openingBracketFlag = true
-             AudioServicesPlaySystemSound(1520)
-        }
-    }
-    
-    @IBAction func pressedFactorial(_ sender: UIButton) {
-        
-        updateMainScreen(input: " !")
-         AudioServicesPlaySystemSound(1520)
-    }
-    
-    
-    @IBAction func pressedExponent(_ sender: UIButton) {
-        if !operationFlag {
-            updateMainScreen(input: " ^ ")
-             AudioServicesPlaySystemSound(1520)
-            
-            if let currentPosition = mainScreen.selectedTextRange?.start {
-                
-                if let position = mainScreen.position(from: currentPosition, offset: -3) {
-                    
-                    mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
-                }
-            }
-        }
-    }
-    
-    @IBAction func pressedAC(_ sender: UIButton) {
-        mainScreen.text = ""
-        resetFlags()
-        updateCursor()
-    }
-    
-    func resetFlags() {
-        operationFlag = false
-        openingBracketFlag = false
-        closingBracketFlag = false
-        decimalFlag = false
-    }
-    
-    @IBOutlet weak var mainScreen: UITextField!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -215,11 +70,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         mainScreen.inputView = UIView()
         mainScreen.becomeFirstResponder()
         
-        labelCursor.latex = "\\wr"
-        label.latex = "\\;"
-        updateLatex(token: " ")
-        
+//        labelCursor.latex = "12\\wr34"
+//        label.latex = "12\\;34"
+//
+//        labelLatixSize = label.intrinsicContentSize
+//        cursorLatixSize = labelCursor.intrinsicContentSize
+//
+//        expressionScrollView = UIScrollView(frame: expressionView.bounds)
         renderMathEquation()
+        
+//        labelCursor.latex = "12\\wr3"
+//        label.latex = "12\\;3"
+        
+        blinkCursor()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -486,27 +350,45 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             literalCount += 1
             
-            renderMathEquation()
+            
+            updateExpressionFrame()
+            
+            
+            print("Pressed primary button:")
+            print("Cursor lable:",labelCursor.latex!)
+            print("Lable:",label.latex!)
             
         } else {
             
-           labelCursor.latex = labelCursor.latex?.replacingOccurrences(of: "\\wr", with: "")
-            label.latex = label.latex?.replacingOccurrences(of: "\\;", with: "")
+            labelCursor.latex = labelCursor.latex?.replacingOccurrences(of: "\\check{\\ }", with: "")
+            label.latex = label.latex?.replacingOccurrences(of: "\\ ", with: "")
+                        
+            var updatedExpressionLatex = ""
+            var updatedExpressionLatexWithCursor = ""
+            var characterCounter = 0
             
-            //print(labelCursor.latex,"New: ",new)
+            for token in label.latex! {
+                
+                if characterCounter == cursorIndex {
+                    
+                    updatedExpressionLatex += "\\ "
+                    updatedExpressionLatexWithCursor += "\\check{\\ }"
+                }
+    
+                updatedExpressionLatex += "\(token)"
+                updatedExpressionLatexWithCursor += "\(token)"
+                characterCounter += 1
+            }
             
-            label.latex?.insert("\\", at: (label.latex?.index((label.latex?.startIndex)!, offsetBy: cursorIndex))!)
-            labelCursor.latex?.insert("\\", at: (label.latex?.index((labelCursor.latex?.startIndex)!, offsetBy: cursorIndex))!)
+            labelCursor.latex = updatedExpressionLatexWithCursor
+            label.latex = updatedExpressionLatex
             
-            label.latex?.insert(";", at: (label.latex?.index((label.latex?.startIndex)!, offsetBy: cursorIndex + 1))!)
-            labelCursor.latex?.insert("w", at: (label.latex?.index((labelCursor.latex?.startIndex)!, offsetBy: cursorIndex + 1))!)
+            print("Moved cursor:")
+            print("Cursor lable:",labelCursor.latex!)
             
-            labelCursor.latex?.insert("r", at: (label.latex?.index((labelCursor.latex?.startIndex)!, offsetBy: cursorIndex + 2))!)
-            
-            print("Cursor lable:",labelCursor.latex)
-            
-            print("Lable: \(label.latex)")
-            renderMathEquation()
+            print("Lable:",label.latex!)
+
+            updateExpressionFrame()
         }
         
         
@@ -669,55 +551,59 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func removeView(scren: UIView){
-        
-        let views = scren.subviews
-        
-        if views.indices.contains(0) {
-             views[0].removeFromSuperview()
-            print("Removing")
-        }
-    }
+//    func removeView(scren: UIView){
+//
+//        let views = scren.subviews
+//
+//        if views.indices.contains(0) {
+//             views[0].removeFromSuperview()
+//            print("Removing")
+//        }
+//    }
     
     
     func renderMathEquation() {
-        
-        
-        
+    
         mainScreenStackView.isHidden = true
         expressionView.isHidden = false
-        
-        removeView(scren: expressionView)
-        
-        //label.latex =  "x = \\frac{\\frac{-b \\pm \\sqrt{b^2-\\;4ac}}{2a}\\times54+10}{\\frac{100}{10}}\\times10000"
-        //labelCursor.latex = "x = \\frac{\\frac{-b \\pm \\sqrt{b^2-\\wr4ac}}{2a}\\times54+10}{\\frac{100}{10}}\\times10000"
         
         label.fontSize = 40.0
         labelCursor.fontSize = 40.0
         label.textColor = UIColor.white
         labelCursor.textColor = UIColor.black
         
-        let expressionScrollView = UIScrollView(frame: expressionView.bounds)
-        expressionScrollView.isScrollEnabled = true
+        labelCursor.latex = "\\check{\\ }"
+        label.latex = "\\ "
         
         
+        //label.latex =  "x = \\frac{\\frac{-b \\pm \\sqrt{b^2\\ 3-\\ 4ac}}{2a}\\times5\\ 4+10}{\\frac{100}{10}}\\times10000"
+        //labelCursor.latex = "x = \\frac{\\frac{-b \\pm \\sqrt{b^2\\check{\\ }3-\\check{\\ }4ac}}{2a}\\times5\\check{\\ }4+10}{\\frac{100}{10}}\\times10000"
         
-        expressionScrollView.contentSize = CGSize(width: labelLatixSize.width + 5.0, height: labelLatixSize.height + 5.0 )
+        labelLatixSize = label.intrinsicContentSize
+        cursorLatixSize = labelCursor.intrinsicContentSize
+        
+        expressionScrollView = UIScrollView(frame: expressionView.bounds)
+        
+        print("\nWidth:",labelLatixSize.width," Height:",labelLatixSize.width, "\n")
+        
+//        expressionScrollView.contentSize = CGSize(width: labelLatixSize.width + 5.0, height: labelLatixSize.height + 5.0 )
         
         expressionScrollView.addSubview(labelCursor)
-        //labelCursor.frame = CGRect(x: 4.5 , y: 5.9, width: labelCursor.intrinsicContentSize.width, height: labelCursor.intrinsicContentSize.height)
-        labelCursor.frame = CGRect(x: 4.5 , y: 5.9, width: cursorLatixSize.width, height: cursorLatixSize.height)
-        
+    
         expressionScrollView.addSubview(label)
-        //label.frame = CGRect(x: 5.0, y: 5.0, width: label.intrinsicContentSize.width, height: label.intrinsicContentSize.height)
-        label.frame = CGRect(x: 5.0, y: 5.0, width: labelLatixSize.width, height: labelLatixSize.height)
+        
+        updateExpressionFrame()
         
         expressionView.addSubview(expressionScrollView)
     
-        let subviews = expressionScrollView.subviews
+    }
+    
+
+    func blinkCursor() {
         
-        func sayHello(T: Timer)
-        {
+        func blink(T: Timer) {
+            let subviews = expressionScrollView.subviews
+            
             if subviews[0].isHidden {
                 //print("Showing")
                 subviews[0].isHidden = false
@@ -727,9 +613,176 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 //print("Hiding")
             }
         }
-    
-        _ = Timer.scheduledTimer(withTimeInterval: 0.40, repeats: true, block: sayHello(T:))
+        
+        _ = Timer.scheduledTimer(withTimeInterval: 0.40, repeats: true, block: blink(T:))
         
     }
+    
+    func updateExpressionFrame() {
+        
+        expressionScrollView.contentSize = CGSize(width: labelLatixSize.width + 5.0, height: labelLatixSize.height + 5.0 )
+        labelCursor.frame = CGRect(x: 5.0 , y: 5.0, width: cursorLatixSize.width, height: cursorLatixSize.height)
+        label.frame = CGRect(x: 5.0, y: 5.0, width: labelLatixSize.width, height: labelLatixSize.height)
+        
+        print("\nWidth:",labelLatixSize.width," Height:",labelLatixSize.width, "\n")
+
+        
+    }
+    
+    @IBAction func pressedA(_ sender: Any) {
+        if calculationMode == 1 && baseValue == 16 {
+            updateMainScreen(input: "A")
+            AudioServicesPlaySystemSound(1520)
+        }
+    }
+    
+    @IBAction func pressedB(_ sender: Any) {
+        if calculationMode == 1 && baseValue == 16 {
+            updateMainScreen(input: "B")
+            AudioServicesPlaySystemSound(1520)
+        }
+    }
+    
+    @IBAction func pressedC(_ sender: Any) {
+        
+        if calculationMode == 1 && baseValue == 16 {
+            updateMainScreen(input: "C")
+            AudioServicesPlaySystemSound(1520)
+        }
+        
+    }
+    
+    @IBAction func pressedD(_ sender: Any) {
+        if calculationMode == 1 && baseValue == 16 {
+            updateMainScreen(input: "D")
+            AudioServicesPlaySystemSound(1520)
+        }
+    }
+    
+    @IBAction func pressedE(_ sender: Any) {
+        if calculationMode == 1 && baseValue == 16 {
+            updateMainScreen(input: "E")
+            AudioServicesPlaySystemSound(1520)
+        }
+    }
+    
+    @IBAction func pressedF(_ sender: Any) {
+        if calculationMode == 1 && baseValue == 16 {
+            updateMainScreen(input: "F")
+            AudioServicesPlaySystemSound(1520)
+        }
+    }
+    
+    @IBAction func pressedMultiply(_ sender: UIButton) {
+        if !operationFlag{
+            updateMainScreen(input: " * ")
+            operationFlag = true
+            decimalFlag = false
+            operationFlag = false
+            openingBracketFlag = false
+            closingBracketFlag = true
+            AudioServicesPlaySystemSound(1520)
+        }
+        
+    }
+    
+    @IBAction func pressedDivide(_ sender: UIButton) {
+        if !operationFlag{
+            updateMainScreen(input: " / ")
+            operationFlag = true
+            decimalFlag = false
+            openingBracketFlag = false
+            closingBracketFlag = true
+            AudioServicesPlaySystemSound(1520)
+        }
+    }
+    
+    @IBAction func pressedPlus(_ sender: UIButton) {
+        if !operationFlag{
+            updateMainScreen(input: " + ")
+            operationFlag = true
+            decimalFlag = false
+            openingBracketFlag = false
+            closingBracketFlag = true
+            AudioServicesPlaySystemSound(1520)
+        }
+    }
+    
+    @IBAction func pressedMinus(_ sender: UIButton) {
+        if !operationFlag{
+            updateMainScreen(input: " - ")
+            operationFlag = true
+            decimalFlag = false
+            openingBracketFlag = false
+            closingBracketFlag = true
+            AudioServicesPlaySystemSound(1520)
+        }
+    }
+    @IBAction func pressedOpeningBracket(_ sender: UIButton) {
+        if !openingBracketFlag {
+            updateMainScreen(input: "( ")
+            AudioServicesPlaySystemSound(1520)
+        }
+        
+    }
+    @IBAction func pressedOpeningClosing(_ sender: UIButton) {
+        if !closingBracketFlag {
+            updateMainScreen(input: " )")
+            AudioServicesPlaySystemSound(1520)
+        }
+        
+    }
+    
+    @IBAction func pressedDecimalPoint(_ sender: Any) {
+        if !decimalFlag {
+            updateMainScreen(input: ".")
+            decimalFlag = true
+            operationFlag = true
+            closingBracketFlag = true
+            openingBracketFlag = true
+            AudioServicesPlaySystemSound(1520)
+        }
+    }
+    
+    @IBAction func pressedFactorial(_ sender: UIButton) {
+        
+        updateMainScreen(input: " !")
+        AudioServicesPlaySystemSound(1520)
+    }
+    
+    
+    @IBAction func pressedExponent(_ sender: UIButton) {
+        if !operationFlag {
+            updateMainScreen(input: " ^ ")
+            AudioServicesPlaySystemSound(1520)
+            
+            if let currentPosition = mainScreen.selectedTextRange?.start {
+                
+                if let position = mainScreen.position(from: currentPosition, offset: -3) {
+                    
+                    mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
+                }
+            }
+        }
+    }
+    
+    @IBAction func pressedAC(_ sender: UIButton) {
+        mainScreen.text = ""
+        resetFlags()
+        updateCursor()
+    }
+    
+    func resetFlags() {
+        operationFlag = false
+        openingBracketFlag = false
+        closingBracketFlag = false
+        decimalFlag = false
+    }
+    
+    @IBOutlet weak var mainScreen: UITextField!
+    
+    
 }
+
+
 
