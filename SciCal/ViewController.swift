@@ -60,7 +60,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let labelCursor = MTMathUILabel()
     var expressionScrollView : UIScrollView!
     
-   
+    let inputLinkedList = LinkedList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +95,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         let btnValue = sender.tag
         
-        updateLatex(token: "\(btnValue)")
+        inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "\(btnValue)")
+        
+        //updateLatex(token: "\(btnValue)")
+        //insertCursor(mode: 0)
+        refreshLatexString(calledFrom: 0)
+
+        print("Cursor index is: ",cursorIndex)
+        
+        
         
         if calculationMode == 0 {
             
@@ -193,7 +201,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         updateCursor()
         baseValue = 2
-    
     }
     
     @IBAction func convertToHex(_ sender: UIButton) {
@@ -212,8 +219,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         updateCursor()
         baseValue = 16
     }
-    
-    
     
     @IBAction func deleteText(_ sender: Any) {
         
@@ -271,13 +276,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         
                         mainScreen.replace(updatedRange, withText: "")
                     }
-                    
-                        
-                        
-                        //mainScreen.replace(updatedRange, withText: "")
-                    
                     updateCursor()
-                    
                 }
             }
         }
@@ -332,72 +331,34 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
-    func updateLatex(token: String) {
+    func refreshLatexString(calledFrom: Int) {
         
-        if token != "cursor" {
-            let insertToken = Character(token)
-            
-            
-            label.latex?.insert(insertToken, at: (label.latex?.index((label.latex?.startIndex)!, offsetBy: cursorIndex))!)
-            
-            labelCursor.latex?.insert(insertToken, at: (label.latex?.index((labelCursor.latex?.startIndex)!, offsetBy: cursorIndex))!)
+        if calledFrom == 0 {
             
             cursorIndex += 1
-            
-            labelLatixSize = label.intrinsicContentSize
-            cursorLatixSize = labelCursor.intrinsicContentSize
-            
             literalCount += 1
+            let result = inputLinkedList.displayString(cursorPosition: cursorIndex)
+            label.latex = result.latex
+            labelCursor.latex = result.cursor
             
-            
-            updateExpressionFrame()
-            
-            
-            print("Pressed primary button:")
-            print("Cursor lable:",labelCursor.latex!)
-            print("Lable:",label.latex!)
             
         } else {
             
-            labelCursor.latex = labelCursor.latex?.replacingOccurrences(of: "\\check{\\ }", with: "")
-            label.latex = label.latex?.replacingOccurrences(of: "\\ ", with: "")
-                        
-            var updatedExpressionLatex = ""
-            var updatedExpressionLatexWithCursor = ""
-            var characterCounter = 0
-            
-            for token in label.latex! {
-                
-                if characterCounter == cursorIndex {
-                    
-                    updatedExpressionLatex += "\\ "
-                    updatedExpressionLatexWithCursor += "\\check{\\ }"
-                }
-    
-                updatedExpressionLatex += "\(token)"
-                updatedExpressionLatexWithCursor += "\(token)"
-                characterCounter += 1
-            }
-            
-            labelCursor.latex = updatedExpressionLatexWithCursor
-            label.latex = updatedExpressionLatex
-            
-            print("Moved cursor:")
-            print("Cursor lable:",labelCursor.latex!)
-            
-            print("Lable:",label.latex!)
-
-            updateExpressionFrame()
+            let result = inputLinkedList.displayString(cursorPosition: cursorIndex)
+            label.latex = result.latex
+            labelCursor.latex = result.cursor
         }
         
+        cursorLatixSize = labelCursor.intrinsicContentSize
+        labelLatixSize = label.intrinsicContentSize
+        
+        updateExpressionFrame()
         
     }
     
-    
     @IBAction func didPanKeyboard(_ sender: UIPanGestureRecognizer) {
         
-        let maxRuns = 10
+        let maxRuns = 30
         
         switch(sender.state){
             
@@ -406,66 +367,75 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         case .changed:
             
-            
-            
             let distance = sender.translation(in: self.view)
-//            print(distance.x)
-            //let xTranslation = round(Double(Int(distance.x)/30))
             let xTranslation = Double(distance.x)
             
             if xTranslation < 0 {
                 
-                
                 runs += 1
                 
-                //print("X Translation: ",xTranslation, "Runs: ", runs)
-
-                if let innitialCursorPositon = mainScreen.selectedTextRange?.start {
+                if cursorIndex > 0 && runs > maxRuns {
+                    cursorIndex -= 1
                     
-                    
-                    if let beginingOfCursor = mainScreen.position(from: innitialCursorPositon , offset: 0) {
-                       
-                            if let leftCharacterRange = mainScreen.textRange(from: innitialCursorPositon , to: mainScreen.beginningOfDocument) {
-                                
-                                mainScreen.selectedTextRange = leftCharacterRange
-                                
-                                
-                                let remainingCharacters = Double((mainScreen.text(in: leftCharacterRange)?.characters.count)!)
-                                
-                                
-                                let resetCharacterRange = mainScreen.textRange(from: beginingOfCursor, to: beginingOfCursor)
-                                
-                                mainScreen.selectedTextRange = resetCharacterRange
-                                
-                                if cursorIndex > 0 && runs > maxRuns {
-                                    cursorIndex -= 1
-                                    updateLatex(token: "cursor")
-                                }
-                                
-                                
-                                if remainingCharacters > 0 && runs > maxRuns {
-                                    
-                                    
-                                    
-                                    
-                                    AudioServicesPlaySystemSound(1519)
-                                    
-                                    if let position = mainScreen.position(from: (mainScreen.selectedTextRange?.start)!, offset: -1) {
-                                        
-                                        mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
-                                        updateCursor()
-                                    }
-                                    runs = 0
-                                }
-                            }
+                    //insertCursor(mode: 1)
+                    refreshLatexString(calledFrom: 1)
+                    AudioServicesPlaySystemSound(1519)
+                    runs = 0
+                }
+                
+                 if let innitialCursorPositon = mainScreen.selectedTextRange?.start {
+                 if let beginingOfCursor = mainScreen.position(from: innitialCursorPositon , offset: 0) {
+                 
+                 if let leftCharacterRange = mainScreen.textRange(from: innitialCursorPositon , to: mainScreen.beginningOfDocument) {
+                 
+                 mainScreen.selectedTextRange = leftCharacterRange
+                 
+                 let remainingCharacters = Double((mainScreen.text(in: leftCharacterRange)?.characters.count)!)
+                 
+                 
+                 let resetCharacterRange = mainScreen.textRange(from: beginingOfCursor, to: beginingOfCursor)
+                 
+                 mainScreen.selectedTextRange = resetCharacterRange
+                 
+                 if remainingCharacters > 0 && runs > maxRuns {
+                 
+                 AudioServicesPlaySystemSound(1519)
+                 
+                 if let position = mainScreen.position(from: (mainScreen.selectedTextRange?.start)!, offset: -1) {
+                 
+                 mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
+                 updateCursor()
+                 }
+                 runs = 0
+                 }
+                 }
+                 
+                 }
+                 }
 
-                        }
-                    }
+            
                 } else {
                 
-               
-                
                 runs += 1
+                
+                if  runs > maxRuns {
+                    
+                    AudioServicesPlaySystemSound(1519)
+                    
+                    if cursorIndex <  literalCount - 1 {
+                        cursorIndex += 1
+                        
+                    } else {
+                        cursorIndex = literalCount
+                    }
+                    
+                    //insertCursor(mode: 1)
+                    refreshLatexString(calledFrom: 1)
+                    
+                    runs = 0
+                    
+                }
+                
                 if let innitialCursorPositon = mainScreen.selectedTextRange?.start {
                     
                     
@@ -475,7 +445,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                             
                             mainScreen.selectedTextRange = rightCharacterRange
                             
-                            
                             let remainingCharacters = Double((mainScreen.text(in: rightCharacterRange)?.characters.count)!)
                             
                             
@@ -483,10 +452,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                             
                             mainScreen.selectedTextRange = resetCharacterRange
                             
-                            if cursorIndex < literalCount && runs > maxRuns {
-                                cursorIndex += 1
-                                updateLatex(token: "cursor")
-                            }
+                            
                             
                             if remainingCharacters > 0 && runs > maxRuns {
                                 
@@ -551,17 +517,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-//    func removeView(scren: UIView){
-//
-//        let views = scren.subviews
-//
-//        if views.indices.contains(0) {
-//             views[0].removeFromSuperview()
-//            print("Removing")
-//        }
-//    }
-    
-    
     func renderMathEquation() {
     
         mainScreenStackView.isHidden = true
@@ -610,7 +565,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             } else {
                 
                 subviews[0].isHidden = true
-                //print("Hiding")
+//                print("Hiding")
             }
         }
         
@@ -624,7 +579,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         labelCursor.frame = CGRect(x: 5.0 , y: 5.0, width: cursorLatixSize.width, height: cursorLatixSize.height)
         label.frame = CGRect(x: 5.0, y: 5.0, width: labelLatixSize.width, height: labelLatixSize.height)
         
-        print("\nWidth:",labelLatixSize.width," Height:",labelLatixSize.width, "\n")
+//        print("\nWidth:",labelLatixSize.width," Height:",labelLatixSize.width, "\n")
 
         
     }
@@ -684,6 +639,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             AudioServicesPlaySystemSound(1520)
         }
         
+        inputLinkedList.insert(type: "operator", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "\\times")
+        //insertCursor(mode: 0)
+        refreshLatexString(calledFrom: 0)
     }
     
     @IBAction func pressedDivide(_ sender: UIButton) {
@@ -695,6 +653,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
             closingBracketFlag = true
             AudioServicesPlaySystemSound(1520)
         }
+        
+        inputLinkedList.insert(type: "operator", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "\\div")
+        //insertCursor(mode: 0)
+        refreshLatexString(calledFrom: 0)
     }
     
     @IBAction func pressedPlus(_ sender: UIButton) {
@@ -706,6 +668,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             closingBracketFlag = true
             AudioServicesPlaySystemSound(1520)
         }
+        
+        inputLinkedList.insert(type: "operator", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "+")
+        //insertCursor(mode: 0)
+        refreshLatexString(calledFrom: 0)
+        
     }
     
     @IBAction func pressedMinus(_ sender: UIButton) {
@@ -717,6 +684,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
             closingBracketFlag = true
             AudioServicesPlaySystemSound(1520)
         }
+        
+        inputLinkedList.insert(type: "operator", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "-")
+        //insertCursor(mode: 0)
+        refreshLatexString(calledFrom: 0)
     }
     @IBAction func pressedOpeningBracket(_ sender: UIButton) {
         if !openingBracketFlag {
@@ -781,8 +752,4 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var mainScreen: UITextField!
     
-    
 }
-
-
-
