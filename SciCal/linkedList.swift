@@ -39,6 +39,7 @@ class LinkedList {
     var latex = ""
     var normal = ""
     var cursor = ""
+    
     func insert(type: String, position: Int, isSubscript: Bool, superscriptPosition: Int,  latexValue: String) {
         
         var normalValue:String
@@ -59,20 +60,22 @@ class LinkedList {
         }
         
         let newNode = Node(type: type, position: position, isSubscript: isSubscript, superscriptPosition: superscriptPosition, latexValue: latexValue, normalValue: normalValue)
+//
+//        print("Trying to insert at position: ", position)
+//        print("New nodes position is: ",newNode.position)
         
-        print("Trying to insert at position: ", position)
-        print("New nodes position is: ",newNode.position)
         if head == nil {
             
             print("New node is head")
             head = newNode
             tail = newNode
             
+            
         } else {
             
             var travelPointer = head
             
-            while travelPointer?.next != nil && travelPointer?.next?.position != position {
+            while travelPointer?.next != nil && travelPointer?.position != position {
                 
                 travelPointer = travelPointer?.next
             }
@@ -90,6 +93,7 @@ class LinkedList {
                     travelPointer?.position += 1
                     travelPointer = travelPointer?.next
                 }
+                tail?.position += 1
                 
             } else if newNode.position == (tail?.position)! + 1 {
                 
@@ -102,55 +106,86 @@ class LinkedList {
                 
             } else {
                 
-                print("Inserting value here")
+                print("Inserting value somewhere inbetween head and tail")
                 
-                var updatePosition = travelPointer?.next
+                travelPointer?.previous?.next = newNode
+                newNode.previous = travelPointer?.previous
                 
-                while updatePosition != nil {
+                newNode.next = travelPointer
+                travelPointer?.previous = newNode
+                
+                //var updatePosition = travelPointer?.next
+//                travelPointer?.next?.previous = newNode
+//                newNode.next = travelPointer?.next
+//                newNode.previous = travelPointer
+//                travelPointer?.next = newNode
+                
+                while travelPointer?.next != nil {
                     
-                    updatePosition?.position += 1
-                    updatePosition = updatePosition?.next
+                    print(travelPointer?.latexValue)
+                    
+                    travelPointer?.position += 1
+                    travelPointer = travelPointer?.next
+                    
                 }
+                
+                tail?.position += 1
                 //print(travelPointer?.position)
                 //print(travelPointer?.latexValue,travelPointer?.next?.latexValue)
-                travelPointer?.next?.previous = newNode
-                newNode.next = travelPointer?.next
-                newNode.previous = travelPointer
-                travelPointer?.next = newNode
             }
             }
-        
-        let result = displayString(cursorPosition: position )
-        latex = result.latex
-        normal = result.normal
-        cursor = result.cursor
+    
     }
   
-    
-    func delete(position: Int){
+    func delete(cursorPosition: Int){
+        
+        print("\nDeleting at index", cursorPosition)
+        
+        let position = cursorPosition - 1
         
         if var travelPointer = head {
+            
+            if position >= 0{
             
             while travelPointer.position != position && travelPointer.next != nil {
                 
                 travelPointer = travelPointer.next!
             }
             
-            if travelPointer.position == head?.position {
+            if position == head?.position {
                 
-                head = travelPointer.next
-                head?.previous = nil
+                print("Deleting head")
                 
-                while travelPointer.next != nil {
+                if head?.next != nil {
                     
-                    travelPointer.position -= 1
-                    travelPointer = travelPointer.next!
+                    head = head?.next
+                    head?.previous = nil
+                    
+                    travelPointer = head!
+                    
+                    while travelPointer.next != nil {
+                        
+                        travelPointer.position -= 1
+                        travelPointer = travelPointer.next!
+
+                    }
+                    tail?.position -= 1
+                    
+                } else {
+                    
+                    head = nil
+                    tail = nil
                 }
-            } else if travelPointer.position == tail?.position {
+                
+            } else if position == tail?.position {
+                
+                print("Deleting tail")
                 
                 tail = travelPointer.previous
                 tail?.next = nil
+                
             } else {
+                
                 var updatePosition = travelPointer.next
                 travelPointer.previous?.next = travelPointer.next
                 travelPointer.next?.previous = travelPointer.previous
@@ -165,13 +200,12 @@ class LinkedList {
             }
         }
         
-        let result = displayString(cursorPosition: position)
-        latex = result.latex
-        normal = result.normal
-        cursor = result.cursor
+    }
     }
 
     func displayString(cursorPosition: Int) -> (latex: String, normal: String, cursor: String){
+        
+        print("\nWill insert cursor at: ",cursorPosition)
         
         var latexString = ""
         var normalString = ""
@@ -201,20 +235,21 @@ class LinkedList {
                 } else {
                     moreTerms = false
             }
-        }
-            if !cursorSet {
-                latexString += "\\ "
-                cursorString += "\\check{\\ }"
-                cursorSet = true
             }
-            
-            print("\nLatex: ",latexString,"\nNormal String: ",normalString,"\nCursor String:",cursorString)
         }
+        
+        if !cursorSet {
+            latexString += "\\ "
+            cursorString += "\\check{\\ }"
+            cursorSet = true
+        }
+        
+        print("\nLatex: ",latexString,"\nNormal String: ",normalString,"\nCursor String:",cursorString,"\n")
         
         return (latexString,normalString,cursorString)
     }
     
-    func legth() -> Int {
+    func length() -> Int {
     
         var length = 0
         
@@ -223,5 +258,12 @@ class LinkedList {
         }
         
         return length
+    }
+    
+    func empty() {
+        
+        head = nil
+        tail = nil
+        
     }
 }

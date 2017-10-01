@@ -97,8 +97,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "\(btnValue)")
         
-        //updateLatex(token: "\(btnValue)")
-        //insertCursor(mode: 0)
         refreshLatexString(calledFrom: 0)
 
         print("Cursor index is: ",cursorIndex)
@@ -222,6 +220,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func deleteText(_ sender: Any) {
         
+       
+        if cursorIndex != 0 {
+            
+            inputLinkedList.delete(cursorPosition: cursorIndex)
+            literalCount -= 1
+            cursorIndex -= 1
+            refreshLatexString(calledFrom: 1)
+        }
+        
+        
         if let range = mainScreen.selectedTextRange {
             
             if range.start == range.end {
@@ -301,7 +309,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let position = mainScreen.position(from: mainScreen.beginningOfDocument, offset: cursorPosition)!
         mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
         
-        
     }
     
     func updateMainScreen( input: String){
@@ -342,7 +349,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             labelCursor.latex = result.cursor
             
             
-        } else {
+        } else if calledFrom == 1 {
             
             let result = inputLinkedList.displayString(cursorPosition: cursorIndex)
             label.latex = result.latex
@@ -588,13 +595,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if calculationMode == 1 && baseValue == 16 {
             updateMainScreen(input: "A")
             AudioServicesPlaySystemSound(1520)
+            
+            inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "A")
+            refreshLatexString(calledFrom: 0)
         }
+        
     }
     
     @IBAction func pressedB(_ sender: Any) {
         if calculationMode == 1 && baseValue == 16 {
             updateMainScreen(input: "B")
             AudioServicesPlaySystemSound(1520)
+            
+            inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "B")
+            refreshLatexString(calledFrom: 0)
         }
     }
     
@@ -603,6 +617,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if calculationMode == 1 && baseValue == 16 {
             updateMainScreen(input: "C")
             AudioServicesPlaySystemSound(1520)
+            
+            inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "C")
+            refreshLatexString(calledFrom: 0)
         }
         
     }
@@ -611,6 +628,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if calculationMode == 1 && baseValue == 16 {
             updateMainScreen(input: "D")
             AudioServicesPlaySystemSound(1520)
+            
+            inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "D")
+            refreshLatexString(calledFrom: 0)
         }
     }
     
@@ -618,6 +638,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if calculationMode == 1 && baseValue == 16 {
             updateMainScreen(input: "E")
             AudioServicesPlaySystemSound(1520)
+            
+            inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "E")
+            refreshLatexString(calledFrom: 0)
         }
     }
     
@@ -625,6 +648,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if calculationMode == 1 && baseValue == 16 {
             updateMainScreen(input: "F")
             AudioServicesPlaySystemSound(1520)
+            
+            inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "F")
+            refreshLatexString(calledFrom: 0)
         }
     }
     
@@ -690,18 +716,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         refreshLatexString(calledFrom: 0)
     }
     @IBAction func pressedOpeningBracket(_ sender: UIButton) {
-        if !openingBracketFlag {
+        
             updateMainScreen(input: "( ")
             AudioServicesPlaySystemSound(1520)
-        }
+            
+            inputLinkedList.insert(type: "operator", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "(")
+            refreshLatexString(calledFrom: 0)
         
     }
     @IBAction func pressedOpeningClosing(_ sender: UIButton) {
-        if !closingBracketFlag {
+       
             updateMainScreen(input: " )")
             AudioServicesPlaySystemSound(1520)
-        }
         
+        inputLinkedList.insert(type: "operator", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: ")")
+        refreshLatexString(calledFrom: 0)
     }
     
     @IBAction func pressedDecimalPoint(_ sender: Any) {
@@ -712,6 +741,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             closingBracketFlag = true
             openingBracketFlag = true
             AudioServicesPlaySystemSound(1520)
+            
+            inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: ".")
+            refreshLatexString(calledFrom: 0)
         }
     }
     
@@ -719,11 +751,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         updateMainScreen(input: " !")
         AudioServicesPlaySystemSound(1520)
+        
+        inputLinkedList.insert(type: "operator", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "!")
+        refreshLatexString(calledFrom: 0)
     }
     
     
     @IBAction func pressedExponent(_ sender: UIButton) {
-        if !operationFlag {
+        
             updateMainScreen(input: " ^ ")
             AudioServicesPlaySystemSound(1520)
             
@@ -734,13 +769,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     mainScreen.selectedTextRange = mainScreen.textRange(from: position, to: position)
                 }
             }
-        }
+        
+        inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "^")
+        refreshLatexString(calledFrom: 0)
     }
     
     @IBAction func pressedAC(_ sender: UIButton) {
         mainScreen.text = ""
         resetFlags()
         updateCursor()
+        
+        literalCount = 0
+        cursorIndex = 0
+        inputLinkedList.empty()
+        refreshLatexString(calledFrom: 1)
     }
     
     func resetFlags() {
