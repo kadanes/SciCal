@@ -40,13 +40,13 @@
                                             <segment title="Linear"/>
                                             <segment title="Convert"/>
                                         </segments>
-                                        <color key="tintColor" red="0.90591075517199371" green="0.24560776541026" blue="0.14349910810774968" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="didChangeMode:" destination="BYZ-38-t0r" eventType="valueChanged" id="kKN-EL-OK9"/>
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
-                                <color key="backgroundColor" red="0.88513245558375631" green="0.4473770973518062" blue="0.40588698891943981" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Khn-ub-Rcb" secondAttribute="bottom" constant="3" id="BXQ-fZ-IYu"/>
                                     <constraint firstItem="Khn-ub-Rcb" firstAttribute="top" secondItem="mj3-h1-K1m" secondAttribute="top" constant="3" id="LNO-gx-iFx"/>
@@ -58,77 +58,60 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4so-1f-YJH">
                                 <rect key="frame" x="0.0" y="40" width="375" height="160"/>
                                 <subviews>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="755" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="tja-uI-x2x">
+                                        <rect key="frame" x="8" y="8" width="80" height="144"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Yq-XL-z4F">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="48"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <state key="normal" title="Deci">
+                                                    <color key="titleColor" red="1" green="0.3175297507" blue="0.28390788929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="convertToDecimal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aF1-3H-XFm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lX1-3l-4zx">
+                                                <rect key="frame" x="0.0" y="48" width="80" height="48"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <state key="normal" title="Binary">
+                                                    <color key="titleColor" red="1" green="0.3175297507" blue="0.28390788929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="convertToBinary:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pqa-r1-vgO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUv-ry-aHm">
+                                                <rect key="frame" x="0.0" y="96" width="80" height="48"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <state key="normal" title="Hex">
+                                                    <color key="titleColor" red="1" green="0.3175297507" blue="0.28390788929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="convertToHex:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y6R-4L-WK1"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="LY8-MA-sCR"/>
+                                        </constraints>
+                                    </stackView>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nA-22-fpI">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                        <rect key="frame" x="96" y="8" width="271" height="144"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Xls-Qm-nKk">
-                                        <rect key="frame" x="8" y="8" width="359" height="144"/>
-                                        <subviews>
-                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="755" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="tja-uI-x2x">
-                                                <rect key="frame" x="-8" y="0.0" width="80" height="144"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Yq-XL-z4F">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="48"/>
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" title="Deci">
-                                                            <color key="titleColor" red="1" green="0.3175297507" blue="0.28390788929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="convertToDecimal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aF1-3H-XFm"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lX1-3l-4zx">
-                                                        <rect key="frame" x="0.0" y="48" width="80" height="48"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" title="Binary">
-                                                            <color key="titleColor" red="1" green="0.3175297507" blue="0.28390788929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="convertToBinary:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pqa-r1-vgO"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUv-ry-aHm">
-                                                        <rect key="frame" x="0.0" y="96" width="80" height="48"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" title="Hex">
-                                                            <color key="titleColor" red="1" green="0.3175297507" blue="0.28390788929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="convertToHex:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y6R-4L-WK1"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="80" id="ymw-mj-Qmd"/>
-                                                </constraints>
-                                            </stackView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="0" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="ftb-YH-0Zz">
-                                                <rect key="frame" x="0.0" y="0.0" width="359" height="144"/>
-                                                <color key="backgroundColor" red="0.36871621012687683" green="0.36870872974395752" blue="0.36871379613876343" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <gestureRecognizers/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="oNY-hK-Us0" appends="YES" id="zdN-9k-od5"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.29421618579999997" green="0.29421004649999999" blue="0.29421421889999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="1nA-22-fpI" firstAttribute="top" secondItem="4so-1f-YJH" secondAttribute="top" id="Bo4-uc-EBF"/>
-                                    <constraint firstAttribute="trailing" secondItem="1nA-22-fpI" secondAttribute="trailing" id="Cff-hd-RfX"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="Xls-Qm-nKk" secondAttribute="trailing" id="Dah-wT-TpZ"/>
-                                    <constraint firstItem="Xls-Qm-nKk" firstAttribute="top" secondItem="4so-1f-YJH" secondAttribute="topMargin" id="K1k-kd-jQL"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="Xls-Qm-nKk" secondAttribute="bottom" id="KcJ-4r-BBi"/>
-                                    <constraint firstItem="Xls-Qm-nKk" firstAttribute="leading" secondItem="4so-1f-YJH" secondAttribute="leadingMargin" id="POi-nO-NBN"/>
-                                    <constraint firstAttribute="bottom" secondItem="1nA-22-fpI" secondAttribute="bottom" id="Wpf-zx-BMl"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="1nA-22-fpI" secondAttribute="trailing" id="0Me-oX-ZvB"/>
+                                    <constraint firstItem="1nA-22-fpI" firstAttribute="leading" secondItem="tja-uI-x2x" secondAttribute="trailing" constant="8" id="23m-6S-z44"/>
+                                    <constraint firstItem="tja-uI-x2x" firstAttribute="leading" secondItem="4so-1f-YJH" secondAttribute="leadingMargin" id="2wh-kq-7vm"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="tja-uI-x2x" secondAttribute="bottom" id="8Ul-0t-8hK"/>
+                                    <constraint firstItem="1nA-22-fpI" firstAttribute="top" secondItem="4so-1f-YJH" secondAttribute="topMargin" id="GTh-7b-9gy"/>
+                                    <constraint firstItem="tja-uI-x2x" firstAttribute="top" secondItem="4so-1f-YJH" secondAttribute="topMargin" id="LGl-HH-2vP"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="1nA-22-fpI" secondAttribute="bottom" id="eZP-m4-b5h"/>
                                     <constraint firstAttribute="height" constant="160" id="ggK-Jc-SaK"/>
-                                    <constraint firstItem="1nA-22-fpI" firstAttribute="leading" secondItem="4so-1f-YJH" secondAttribute="leading" id="jep-Pa-dbf"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6L-t5-JSc">
@@ -892,8 +875,6 @@
                         <outlet property="decimalModeBtn" destination="7Yq-XL-z4F" id="b4C-M1-fXg"/>
                         <outlet property="expressionView" destination="1nA-22-fpI" id="2dz-kJ-FUW"/>
                         <outlet property="hexModeBtn" destination="hUv-ry-aHm" id="WKn-na-UfX"/>
-                        <outlet property="mainScreen" destination="ftb-YH-0Zz" id="hUk-q6-zOd"/>
-                        <outlet property="mainScreenStackView" destination="Xls-Qm-nKk" id="MxB-5J-Fzk"/>
                         <outlet property="modeSelector" destination="Khn-ub-Rcb" id="KoD-qt-C90"/>
                         <outlet property="permutationRow" destination="ANy-FH-DxO" id="eRN-jf-aDc"/>
                     </connections>

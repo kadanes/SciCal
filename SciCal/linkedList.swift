@@ -16,8 +16,8 @@ class Node {
     var position: Int
     var isSubscript: Bool
     var superscriptPosition: Int
-    
-    init(type: String, position: Int, isSubscript: Bool, superscriptPosition: Int, latexValue: String, normalValue: String) {
+    var ignore: Bool
+    init(type: String, position: Int, isSubscript: Bool, superscriptPosition: Int, latexValue: String, normalValue: String, ignore: Bool) {
         
         self.tokenType = type;
         self.position = position;
@@ -25,6 +25,7 @@ class Node {
         self.superscriptPosition = superscriptPosition
         self.latexValue = latexValue
         self.normalValue = normalValue
+        self.ignore = ignore
     }
     
     var next: Node?
@@ -40,7 +41,9 @@ class LinkedList {
     var normal = ""
     var cursor = ""
     
-    func insert(type: String, position: Int, isSubscript: Bool, superscriptPosition: Int,  latexValue: String) {
+    func insert(type: String, position: Int, isSubscript: Bool, superscriptPosition: Int,  latexValue: String, ignore: Bool) {
+        
+        print("Attempting to insert \(latexValue) at position \(position)")
         
         var normalValue:String
         
@@ -55,11 +58,15 @@ class LinkedList {
         case "\\div":
             print("Latix divide")
             normalValue = "/"
+        case "{":
+            normalValue = "("
+        case "}":
+            normalValue = ")"
         default:
             normalValue = latexValue
         }
         
-        let newNode = Node(type: type, position: position, isSubscript: isSubscript, superscriptPosition: superscriptPosition, latexValue: latexValue, normalValue: normalValue)
+        let newNode = Node(type: type, position: position, isSubscript: isSubscript, superscriptPosition: superscriptPosition, latexValue: latexValue, normalValue: normalValue, ignore: ignore)
 //
 //        print("Trying to insert at position: ", position)
 //        print("New nodes position is: ",newNode.position)
@@ -76,10 +83,13 @@ class LinkedList {
             var travelPointer = head
             
             while travelPointer?.next != nil && travelPointer?.position != position {
-                
+                print("\nNode value: ",travelPointer?.latexValue)
+                print("Node Position: ",travelPointer?.position)
+                print("Searching for position",position)
                 travelPointer = travelPointer?.next
+                print("Updated node position: ",travelPointer?.position)
             }
-            
+        
             if newNode.position == head?.position {
                 
                 print("Inserted at start.")
@@ -108,11 +118,32 @@ class LinkedList {
                 
                 print("Inserting value somewhere inbetween head and tail")
                 
-                travelPointer?.previous?.next = newNode
-                newNode.previous = travelPointer?.previous
-                
-                newNode.next = travelPointer
-                travelPointer?.previous = newNode
+                if (travelPointer?.ignore)! {
+                    //travelPointer = travelPointer?.next
+                    //print(travelPointer?.latexValue)
+                    if travelPointer === tail! {
+                        travelPointer?.next = newNode
+                        newNode.previous = travelPointer
+                        print("Travel pointer is tail")
+                        tail = newNode
+                        
+                    } else {
+                        
+                        travelPointer?.next?.previous = newNode
+                        newNode.previous = travelPointer
+                        newNode.next = travelPointer?.next
+                        travelPointer?.next = newNode
+                    }
+                    
+                    
+                } else {
+                    
+                    travelPointer?.previous?.next = newNode
+                    newNode.previous = travelPointer?.previous
+                    
+                    newNode.next = travelPointer
+                    travelPointer?.previous = newNode
+                }
                 
                 //var updatePosition = travelPointer?.next
 //                travelPointer?.next?.previous = newNode
@@ -122,14 +153,28 @@ class LinkedList {
                 
                 while travelPointer?.next != nil {
                     
-                    print(travelPointer?.latexValue)
+                     if travelPointer?.latexValue == "{" {
+                        
+                        travelPointer?.position = (travelPointer?.previous?.position)! + 1
+                    } else if travelPointer?.latexValue == "}" {
+                        
+                        travelPointer?.position = (travelPointer?.previous?.position)!
+                    } else {
+                        
+                        travelPointer?.position += 1
+                    }
                     
-                    travelPointer?.position += 1
                     travelPointer = travelPointer?.next
-                    
                 }
                 
-                tail?.position += 1
+                if tail?.latexValue != "}" {
+                    
+                    tail?.position = (tail?.position)! + 1
+                } else {
+                    
+                    tail?.position = (tail?.previous?.position)!
+                }
+                //tail?.position += 1
                 //print(travelPointer?.position)
                 //print(travelPointer?.latexValue,travelPointer?.next?.latexValue)
             }
@@ -205,8 +250,6 @@ class LinkedList {
 
     func displayString(cursorPosition: Int) -> (latex: String, normal: String, cursor: String){
         
-        print("\nWill insert cursor at: ",cursorPosition)
-        
         var latexString = ""
         var normalString = ""
         var cursorString = ""
@@ -218,6 +261,8 @@ class LinkedList {
         if var travelPointer = head {
             moreTerms = true
             while moreTerms {
+                
+                print(travelPointer.latexValue)
                 
                 if (travelPointer.position)  == cursorPosition {
                     latexString += "\\ "
