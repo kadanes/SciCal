@@ -50,18 +50,20 @@ class LinkedList {
         switch latexValue {
         case "\\times":
             print("Latix multiply")
-            normalValue = "*"
+            normalValue = " * "
         case "-":
-            normalValue = "-"
+            normalValue = " - "
         case "+":
-            normalValue = "+"
+            normalValue = " + "
         case "\\div":
             print("Latix divide")
-            normalValue = "/"
+            normalValue = " / "
         case "{":
-            normalValue = "("
+            normalValue = " ( "
         case "}":
-            normalValue = ")"
+            normalValue = " ) "
+        case "^{":
+            normalValue = " ^ ( "
         default:
             normalValue = latexValue
         }
@@ -83,11 +85,8 @@ class LinkedList {
             var travelPointer = head
             
             while travelPointer?.next != nil && travelPointer?.position != position {
-                print("\nNode value: ",travelPointer?.latexValue)
-                print("Node Position: ",travelPointer?.position)
-                print("Searching for position",position)
+               
                 travelPointer = travelPointer?.next
-                print("Updated node position: ",travelPointer?.position)
             }
         
             if newNode.position == head?.position {
@@ -151,29 +150,31 @@ class LinkedList {
 //                newNode.previous = travelPointer
 //                travelPointer?.next = newNode
                 
-                while travelPointer?.next != nil {
+                while travelPointer != nil {
                     
-                     if travelPointer?.latexValue == "{" {
-                        
-                        travelPointer?.position = (travelPointer?.previous?.position)! + 1
-                    } else if travelPointer?.latexValue == "}" {
-                        
-                        travelPointer?.position = (travelPointer?.previous?.position)!
-                    } else {
-                        
-                        travelPointer?.position += 1
-                    }
+//                     if travelPointer?.latexValue == "{" {
+//
+//                        travelPointer?.position = (travelPointer?.previous?.position)! + 1
+//                    } else if travelPointer?.latexValue == "}" {
+//
+//                        travelPointer?.position = (travelPointer?.previous?.position)!
+//                    } else {
+//
+//
+//                    }
+//
+                    travelPointer?.position += 1
                     
                     travelPointer = travelPointer?.next
                 }
                 
-                if tail?.latexValue != "}" {
-                    
-                    tail?.position = (tail?.position)! + 1
-                } else {
-                    
-                    tail?.position = (tail?.previous?.position)!
-                }
+//                if tail?.latexValue != "}" {
+//
+//                    tail?.position = (tail?.position)! + 1
+//                } else {
+//
+//                    tail?.position = (tail?.previous?.position)!
+//                }
                 //tail?.position += 1
                 //print(travelPointer?.position)
                 //print(travelPointer?.latexValue,travelPointer?.next?.latexValue)
@@ -182,11 +183,12 @@ class LinkedList {
     
     }
   
-    func delete(cursorPosition: Int){
+    func delete(cursorPosition: Int) -> Bool {
         
+        var deleteOneMore = false
         print("\nDeleting at index", cursorPosition)
         
-        let position = cursorPosition - 1
+        var position = cursorPosition - 1
         
         if var travelPointer = head {
             
@@ -196,7 +198,29 @@ class LinkedList {
                 
                 travelPointer = travelPointer.next!
             }
-            
+                if travelPointer.latexValue == "}" {
+                    print("Found } to delete")
+                    if travelPointer.previous?.latexValue != "^{" {
+                       
+                        travelPointer = travelPointer.previous!
+                        position -= 1
+                    } else if travelPointer.previous?.latexValue == "^{" {
+                        
+                        deleteOneMore = true
+                    }
+                } else if travelPointer.latexValue == "^{" {
+                    
+                    print("Found ^{ to delete")
+                    if travelPointer.next?.latexValue == "}" {
+                       
+                        travelPointer = travelPointer.next!
+                        deleteOneMore = true
+                    } else {
+                        //write code to remove the adjoning }
+                    }
+                }
+                
+                
             if position == head?.position {
                 
                 print("Deleting head")
@@ -225,27 +249,52 @@ class LinkedList {
             } else if position == tail?.position {
                 
                 print("Deleting tail")
-                
-                tail = travelPointer.previous
-                tail?.next = nil
-                
+                if !deleteOneMore {
+                  
+                    tail = travelPointer.previous
+                    tail?.next = nil
+                } else {
+                    
+                    tail = travelPointer.previous?.previous
+                    tail?.next = nil
+                }
             } else {
                 
-                var updatePosition = travelPointer.next
-                travelPointer.previous?.next = travelPointer.next
-                travelPointer.next?.previous = travelPointer.previous
-                
-                travelPointer = travelPointer.previous!
-                
-                while updatePosition != nil {
+                if !deleteOneMore {
+                    var updatePosition = travelPointer.next
+                    travelPointer.previous?.next = travelPointer.next
+                    travelPointer.next?.previous = travelPointer.previous
                     
-                    updatePosition?.position -= 1
-                    updatePosition = updatePosition?.next
+                    travelPointer = travelPointer.previous!
+                    
+                    while updatePosition != nil {
+                        
+                        updatePosition?.position -= 1
+                        updatePosition = updatePosition?.next
+                    }
+                } else {
+                    
+                    //Needs fixing. To function properly.
+                    print(travelPointer.latexValue)
+                    var updatePosition = travelPointer.next
+                    travelPointer.previous?.previous?.next = travelPointer.next
+                    travelPointer.next?.previous = travelPointer.previous?.previous
+                    
+                    travelPointer = (updatePosition?.previous)!
+                    //Fatal error above.
+                    
+                    while updatePosition != nil {
+                        
+                        updatePosition?.position -= 2
+                        updatePosition = updatePosition?.next
+                    }
                 }
+                
             }
         }
         
     }
+        return deleteOneMore
     }
 
     func displayString(cursorPosition: Int) -> (latex: String, normal: String, cursor: String){

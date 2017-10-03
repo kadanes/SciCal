@@ -203,7 +203,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         if cursorIndex != 0 {
             
-            inputLinkedList.delete(cursorPosition: cursorIndex)
+            if inputLinkedList.delete(cursorPosition: cursorIndex) {
+                literalCount -= 1
+            }
+            
             literalCount -= 1
             cursorIndex -= 1
             refreshLatexString(calledFrom: 1)
@@ -445,11 +448,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         case "\\div": inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "\\div", ignore: false)
             
-        case "^": inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "^", ignore: false)
+        case "^": inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "^{", ignore: false)
         
-        inputLinkedList.insert(type: "operand", position: cursorIndex + 1, isSubscript: false, superscriptPosition: 0, latexValue: "{", ignore: true)
+        //inputLinkedList.insert(type: "operand", position: cursorIndex + 1, isSubscript: false, superscriptPosition: 0, latexValue: "{", ignore: true)
+        literalCount += 1
         
-        inputLinkedList.insert(type: "operand", position: cursorIndex + 1 , isSubscript: false, superscriptPosition: 0, latexValue: "}", ignore: true)
+        inputLinkedList.insert(type: "operand", position: cursorIndex + 1 , isSubscript: false, superscriptPosition: 0, latexValue: "}", ignore: false)
             
         default: inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: input, ignore: false);
         }
