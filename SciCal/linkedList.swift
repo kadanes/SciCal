@@ -201,19 +201,22 @@ class LinkedList {
                 if travelPointer.latexValue == "}" {
                     print("Found } to delete")
                     if travelPointer.previous?.latexValue != "^{" {
-                       
+                        
+                        //Getting a fatel error here when deleting in case a^b^c
+                        
                         travelPointer = travelPointer.previous!
                         position -= 1
                     } else if travelPointer.previous?.latexValue == "^{" {
-                        
+                        print("Previous has ^{")
                         deleteOneMore = true
                     }
                 } else if travelPointer.latexValue == "^{" {
                     
                     print("Found ^{ to delete")
                     if travelPointer.next?.latexValue == "}" {
-                       
+                        print("\nNext contains: ",travelPointer.next?.latexValue)
                         travelPointer = travelPointer.next!
+                        position += 1
                         deleteOneMore = true
                     } else {
                         //write code to remove the adjoning }
@@ -246,21 +249,31 @@ class LinkedList {
                     tail = nil
                 }
                 
-            } else if position == tail?.position {
+            } else if travelPointer === tail {
                 
                 print("Deleting tail")
+                
                 if !deleteOneMore {
                   
                     tail = travelPointer.previous
                     tail?.next = nil
                 } else {
+                    if travelPointer.previous === head {
+                        
+                        print("Found head")
+                        tail = nil
+                        head = nil
+                    } else {
+                       
+                        tail = travelPointer.previous?.previous
+                        tail?.next = nil
+                    }
                     
-                    tail = travelPointer.previous?.previous
-                    tail?.next = nil
                 }
             } else {
                 
                 if !deleteOneMore {
+                    
                     var updatePosition = travelPointer.next
                     travelPointer.previous?.next = travelPointer.next
                     travelPointer.next?.previous = travelPointer.previous
@@ -274,14 +287,15 @@ class LinkedList {
                     }
                 } else {
                     
-                    //Needs fixing. To function properly.
-                    print(travelPointer.latexValue)
                     var updatePosition = travelPointer.next
-                    travelPointer.previous?.previous?.next = travelPointer.next
-                    travelPointer.next?.previous = travelPointer.previous?.previous
+                    let previousOfTP = travelPointer.previous
                     
-                    travelPointer = (updatePosition?.previous)!
-                    //Fatal error above.
+                    previousOfTP?.previous?.next = travelPointer.next!
+                    
+                    travelPointer.next?.previous = previousOfTP
+                    
+                    travelPointer = (travelPointer.next?.previous)!
+                    
                     
                     while updatePosition != nil {
                         
@@ -294,6 +308,13 @@ class LinkedList {
         }
         
     }
+        if position != 0 {
+         
+            position -= 1
+        }
+        print("Position and literal count in LL")
+        print("New cursor position is: ", position)
+        print("New literal count is: ",(length() + 1))
         return deleteOneMore
     }
 
@@ -338,7 +359,7 @@ class LinkedList {
             cursorSet = true
         }
         
-        print("\nLatex: ",latexString,"\nNormal String: ",normalString,"\nCursor String:",cursorString,"\n")
+        print("\nLatex:",latexString,"\nNormal String:",normalString,"\nCursor String:",cursorString,"\n")
         
         return (latexString,normalString,cursorString)
     }

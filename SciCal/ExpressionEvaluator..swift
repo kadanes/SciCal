@@ -26,9 +26,7 @@ class ExpressionEvaluator {
     func evaluateExpression() -> String {
         
        let tokenArray = infix.components(separatedBy: " ")
-        
-        
-        
+                
         for token in tokenArray {
             
             print(operandStack.stackArray)

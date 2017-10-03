@@ -205,6 +205,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             if inputLinkedList.delete(cursorPosition: cursorIndex) {
                 literalCount -= 1
+                cursorIndex -= 1
             }
             
             literalCount -= 1
