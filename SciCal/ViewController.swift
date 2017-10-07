@@ -146,56 +146,65 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func convertToDecimal(_ sender: UIButton) {
         
-        let decimalNumber: String
+        var decimalNumber = ""
+        let input = inputLinkedList.displayString(cursorPosition: 0).normal
+
         switch baseValue {
         case 2:
             
             changeBaseBtnBg(base: 2, newBase: 10)
-            //decimalNumber = converter.converBinaryToDecimal(input: mainScreen.text!)
+            decimalNumber = converter.converBinaryToDecimal(input: input)
            
         case 16:
     
             changeBaseBtnBg(base: 16, newBase: 10)
-            //decimalNumber = converter.convertHexToDecimal(input: mainScreen.text!)
+            decimalNumber = converter.convertHexToDecimal(input: input)
             
-        default:
-            print("Already decimal")
+        default: decimalNumber = input
         }
         baseValue = 10
+        displayAnswer(result: decimalNumber)
     }
     
     @IBAction func convertToBinary(_ sender: UIButton) {
         
-        let binaryNumber: String
+        var binaryNumber = ""
+        let input = inputLinkedList.displayString(cursorPosition: 0).normal
+
         switch baseValue {
         case 10:
             changeBaseBtnBg(base: 10, newBase: 2)
-            //binaryNumber = converter.convertDecimalToBinary(input: mainScreen.text!)
+            binaryNumber = converter.convertDecimalToBinary(input: input)
+            
             
         case 16:
             changeBaseBtnBg(base: 16, newBase: 2)
-            //binaryNumber = converter.convertHexToBinary(input: mainScreen.text!)
+            binaryNumber = converter.convertHexToBinary(input: input)
             
-        default: print("Already binary")
+        default: binaryNumber = input
         
         }
         baseValue = 2
+        displayAnswer(result: binaryNumber)
     }
     
     @IBAction func convertToHex(_ sender: UIButton) {
         
-        let hexNumber: String
+        var hexNumber = ""
+        let input = inputLinkedList.displayString(cursorPosition: 0).normal
+
         switch baseValue {
         case 2:
             
             changeBaseBtnBg(base: 2, newBase: 16)
-            //hexNumber = converter.convertBinaryToHex(input: mainScreen.text!)
+            hexNumber = converter.convertBinaryToHex(input: input)
         case 10:
             changeBaseBtnBg(base: 10, newBase: 16)
-            //hexNumber = converter.converDecimalToHex(input: mainScreen.text!)
+            hexNumber = converter.converDecimalToHex(input: input)
             
-        default: break
+        default: hexNumber = input
         }
+        displayAnswer(result: hexNumber)
         baseValue = 16
     }
     
@@ -217,11 +226,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func arithmeticEqualPressed(_ sender: UIButton) {
         
-        
+        let answer = evaluateAnswer(mode: 0)
+        displayAnswer(result: answer )
+    }
+    
+    func evaluateAnswer(mode: Int) -> String{
         let expressionStrings = inputLinkedList.displayString(cursorPosition: 0)
-        let solver = ExpressionEvaluator(infix: expressionStrings.normal, mode: 0)
+        let solver = ExpressionEvaluator(infix: expressionStrings.normal, mode: mode)
         
         let result = solver.evaluateExpression()
+        return result
+    }
+    
+    func displayAnswer(result: String) {
+        
         
         inputLinkedList.empty()
         
@@ -234,12 +252,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             refreshLatexString(calledFrom: 0)
         }
         
-        //updateExpressionFrame()
+        
         
         print("Result is: ",result)
-        updateCursor()
+        
     }
-    
     
     @IBAction func changeCursorPosition(_ sender: Any) {
         
