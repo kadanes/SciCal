@@ -423,8 +423,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         label.textColor = UIColor.white
         labelCursor.textColor = UIColor.black
         
-        labelCursor.latex = "\\check{\\ }"
-        label.latex = "\\ "
+        labelCursor.latex = "0\\check{\\ }"
+        label.latex = "0\\ "
         //label.latex = "4^{1+\\ 2}"
         //labelCursor.latex = "4^{1+\\check{\\ }2}"
         //label.latex =  "x = \\frac{\\frac{-b \\pm \\sqrt{b^2\\ 3-\\ 4ac}}{2a}\\times5\\ 4+10}{\\frac{100}{10}}\\times10000"
@@ -472,11 +472,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func updateExpressionFrame() {
         
         expressionScrollView.contentSize = CGSize(width: labelLatixSize.width + 5.0, height: labelLatixSize.height + 5.0 )
+        
         labelCursor.frame = CGRect(x: 5.0 , y: 5.0, width: cursorLatixSize.width, height: cursorLatixSize.height)
+        
         label.frame = CGRect(x: 5.0, y: 5.0, width: labelLatixSize.width, height: labelLatixSize.height)
         
-//        print("\nWidth:",labelLatixSize.width," Height:",labelLatixSize.width, "\n")
-
         
     }
     
@@ -647,7 +647,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         literalCount = 0
         cursorIndex = 0
         inputLinkedList.empty()
-        refreshLatexString(calledFrom: 1)
+       
+        labelCursor.latex = "0\\check{\\ }"
+        label.latex = "0\\ "
+
+        cursorLatixSize = labelCursor.intrinsicContentSize
+        labelLatixSize = label.intrinsicContentSize
+
+        updateExpressionFrame()
+        
         AudioServicesPlaySystemSound(1520)
     }
     
