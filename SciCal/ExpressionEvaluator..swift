@@ -21,6 +21,11 @@ class ExpressionEvaluator {
     init(infix: String, mode: Int) {
         self.infix = infix
         self.mode = mode
+        
+        print("Infix string receieved is: ")
+        for chars in infix {
+            print(chars)
+        }
     }
     
     func evaluateExpression() -> String {
@@ -92,51 +97,62 @@ class ExpressionEvaluator {
             print(answer)
         }
         
-        var answer = operandStack.pop()
+        let answerString = operandStack.pop()
         
-        if Double(answer)! != floor(Double(answer)!) {
-            return operandStack.pop()
-        } else {
+        if let answer = Double(answerString) {
             
-            answer = "\(floor(Double(answer)!))"
+            if answer != floor(answer) {
+                
+                return "\(answer)"
+            } else {
+                
+                let integerAnswer = Int(answer)
+                return "\(integerAnswer)"
+            }
             
-            return answer
         }
         
+        return "0"
     }
     
     
     
-    func operate( operation: String, rightOperand: String, leftOperand: String) -> String {
+    func operate( operation: String, rightOperand: String?, leftOperand: String?) -> String {
         
-        print(rightOperand,leftOperand,operation)
         
-        switch operation {
-        case "*":
+        if let leftOpreandString = leftOperand , let rightOperandString = rightOperand {
             
-            print((rightOperand),type(of: rightOperand))
-            return String( Double(leftOperand)! * Double(rightOperand)! )
-            
-        case "/":
-            
-            return String( Double(leftOperand)! / Double(rightOperand)! )
-            
-        case "+":
-            
-            return String( Double(leftOperand)! + Double(rightOperand)! )
-            
-        case "-":
-            
-            return String( Double(leftOperand)! - Double(rightOperand)! )
-            
-        case "^":
-            return String(pow(Double(leftOperand)! , Double(rightOperand)!))
+            if let leftOperandDouble = Double(leftOpreandString), let rightOperandDouble = Double(rightOperandString) {
+                
+                switch operation {
+                case "*":
+                    
+                    
+                    return String( leftOperandDouble * rightOperandDouble )
+                    
+                case "/":
+                    
+                    return String( leftOperandDouble / rightOperandDouble )
+                case "+":
+                    
+                    return String( leftOperandDouble + rightOperandDouble )
 
-        default:
-            
-            return ""
+                case "-":
+                    
+                    return String( leftOperandDouble - rightOperandDouble )
+
+                case "^":
+                    return String( pow(leftOperandDouble, rightOperandDouble) )
+
+                default:
+                    
+                    return ""
+                }
+            }
+           
         }
         
+        return "Math Error!"
     }
     
     func factorial(factorialOf: String ) -> String {

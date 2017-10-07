@@ -43,7 +43,7 @@ class LinkedList {
     
     func insert(type: String, position: Int, isSubscript: Bool, superscriptPosition: Int,  latexValue: String, ignore: Bool) {
         
-        print("Attempting to insert \(latexValue) at position \(position)")
+        //print("Attempting to insert \(latexValue) at position \(position)")
         
         var normalValue:String
         
@@ -58,24 +58,29 @@ class LinkedList {
         case "\\div":
             print("Latix divide")
             normalValue = " / "
-        case "{":
-            normalValue = " ( "
-        case "}":
-            normalValue = " ) "
+        case "(":
+            normalValue = "( "
+        case ")":
+            normalValue = " )"
         case "^{":
             normalValue = " ^ ( "
+        case "}":
+            normalValue = " )"
+        case "!":
+            normalValue = " !"
         default:
             normalValue = latexValue
         }
         
         let newNode = Node(type: type, position: position, isSubscript: isSubscript, superscriptPosition: superscriptPosition, latexValue: latexValue, normalValue: normalValue, ignore: ignore)
-//
+
+        
 //        print("Trying to insert at position: ", position)
 //        print("New nodes position is: ",newNode.position)
         
         if head == nil {
             
-            print("New node is head")
+            print("\nNew node is head\n")
             head = newNode
             tail = newNode
             
@@ -88,34 +93,37 @@ class LinkedList {
                
                 travelPointer = travelPointer?.next
             }
-        
+            
             if newNode.position == head?.position {
                 
-                print("Inserted at start.")
+                print("\nInserted before head\n")
 
                 newNode.next = head
                 head?.previous = newNode
                 head = newNode
                 
-                while travelPointer?.next != nil {
+                while travelPointer != nil {
                     
                     travelPointer?.position += 1
                     travelPointer = travelPointer?.next
                 }
-                tail?.position += 1
                 
             } else if newNode.position == (tail?.position)! + 1 {
                 
-                print("Inserting value at tail")
+                print("\nInserting after tail\n")
                 
-                travelPointer?.next = newNode
-                newNode.previous = travelPointer
+                tail?.next = newNode
+                newNode.previous = tail
                 tail = newNode
-                newNode.next = nil
+                
+//                travelPointer?.next = newNode
+//                newNode.previous = travelPointer
+//                tail = newNode
+//                newNode.next = nil
                 
             } else {
                 
-                print("Inserting value somewhere inbetween head and tail")
+                print("Inserting between head and tail")
                 
                 if (travelPointer?.ignore)! {
                     //travelPointer = travelPointer?.next

@@ -93,7 +93,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         insertInList(input: "\(btnValue)")
         refreshLatexString(calledFrom: 0)
-
+        
         if calculationMode == 0 {
             
              AudioServicesPlaySystemSound(1520)
@@ -218,9 +218,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func arithmeticEqualPressed(_ sender: UIButton) {
         
         
-        let solver = ExpressionEvaluator(infix: inputLinkedList.normal, mode: 0)
+        let expressionStrings = inputLinkedList.displayString(cursorPosition: 0)
+        let solver = ExpressionEvaluator(infix: expressionStrings.normal, mode: 0)
         
         let result = solver.evaluateExpression()
+        
+        inputLinkedList.empty()
+        
+        cursorIndex = 0;
+        literalCount = 0;
+        
+        for charecters in result {
+            
+            insertInList(input: "\(charecters)")
+            refreshLatexString(calledFrom: 0)
+        }
+        
+        //updateExpressionFrame()
         
         print("Result is: ",result)
         updateCursor()
