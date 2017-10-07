@@ -85,8 +85,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        expressionView.frame = CGRect( x: 10 , y: 8 , width: expressionView.frame.width + 80 , height: expressionView.frame.height)
-        //renderMathEquation()
+     
+        setScreenSize(mode: 0)
+ 
     }
     
     @IBAction func primaryButtonPressed(_ sender: UIButton){
@@ -154,9 +155,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         case 0,2,3,4,5 :
             
             expressionView.frame = CGRect( x: 10 , y: 8, width: expressionView.frame.width + 90 , height: expressionView.frame.height)
-            
+            expressionScrollView.frame = expressionView.bounds
+
         case 1:
             expressionView.frame = CGRect( x: 100 , y: 8, width: expressionView.frame.width - 90 , height: expressionView.frame.height)
+            expressionScrollView.frame = expressionView.bounds
         default:
             break
         }
@@ -319,7 +322,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func didPanKeyboard(_ sender: UIPanGestureRecognizer) {
         
-        let maxRuns = 30
+        let maxRuns = 10
         
         switch(sender.state){
             
@@ -347,19 +350,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 
                 runs += 1
                 
-                if  runs > maxRuns {
+                if  runs > maxRuns && literalCount > 0 {
                     
                     AudioServicesPlaySystemSound(1519)
                     
                     if cursorIndex <  literalCount - 1 {
+                        print("Called in C < L")
                         cursorIndex += 1
                         
                     } else {
+                        print("Called in else of C < L")
                         cursorIndex = literalCount
                     }
-                
-                    refreshLatexString(calledFrom: 1)
                     
+                    refreshLatexString(calledFrom: 1)
                     runs = 0
                     
                 }
@@ -483,29 +487,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func insertInList(input: String){
         
         switch input{
+         
+        case "\\times": inputLinkedList.insert(type: "operator", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "\\times", ignore: false)
+        
+        case "\\div": inputLinkedList.insert(type: "operator", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "\\div", ignore: false)
             
-        case "A": inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "A", ignore: false)
+        case "^": inputLinkedList.insert(type: "operator", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "^{", ignore: false)
         
-        case "B": inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "B", ignore: false)
-        
-        case "C": inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "C", ignore: false)
-        
-        case "D": inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "D", ignore: false)
-        
-        case "E": inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "E", ignore: false)
-        
-        case "F": inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "E", ignore: false)
-        
-        case "\\times": inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "\\times", ignore: false)
-        
-        case "\\div": inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "\\div", ignore: false)
-            
-        case "^": inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: "^{", ignore: false)
-        
-        //inputLinkedList.insert(type: "operand", position: cursorIndex + 1, isSubscript: false, superscriptPosition: 0, latexValue: "{", ignore: true)
         literalCount += 1
         
-        inputLinkedList.insert(type: "operand", position: cursorIndex + 1 , isSubscript: false, superscriptPosition: 0, latexValue: "}", ignore: false)
+        inputLinkedList.insert(type: "operator", position: cursorIndex + 1 , isSubscript: false, superscriptPosition: 0, latexValue: "}", ignore: false)
             
         default: inputLinkedList.insert(type: "operand", position: cursorIndex, isSubscript: false, superscriptPosition: 0, latexValue: input, ignore: false);
         }
