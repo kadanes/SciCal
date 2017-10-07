@@ -66,6 +66,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         
+        
 //        labelCursor.latex = "12\\wr34"
 //        label.latex = "12\\;34"
 //
@@ -84,6 +85,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        expressionView.frame = CGRect( x: 10 , y: 8 , width: expressionView.frame.width + 80 , height: expressionView.frame.height)
         //renderMathEquation()
     }
     
@@ -120,6 +122,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func didChangeMode(_ sender: UISegmentedControl) {
         
         calculationMode = sender.selectedSegmentIndex
+        setScreenSize(mode: calculationMode)
         
         if sender.selectedSegmentIndex == 0 {
             
@@ -142,6 +145,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         }
         
+    }
+    
+    func setScreenSize(mode: Int) {
+    
+        switch mode {
+            
+        case 0,2,3,4,5 :
+            
+            expressionView.frame = CGRect( x: 10 , y: 8, width: expressionView.frame.width + 90 , height: expressionView.frame.height)
+            
+        case 1:
+            expressionView.frame = CGRect( x: 100 , y: 8, width: expressionView.frame.width - 90 , height: expressionView.frame.height)
+        default:
+            break
+        }
     }
     
     @IBAction func convertToDecimal(_ sender: UIButton) {
@@ -263,6 +281,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let cursorPosition = Int(cursorPositionSlider.value)
         
     }
+    
+   
     
     
     func updateCursor(){
@@ -630,7 +650,5 @@ class ViewController: UIViewController, UITextFieldDelegate {
         refreshLatexString(calledFrom: 1)
         AudioServicesPlaySystemSound(1520)
     }
-    
-    //@IBOutlet weak var mainScreen: UITextField!
     
 }

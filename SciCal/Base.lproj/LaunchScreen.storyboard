@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,12 +21,54 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="die-Ys-LLA">
+                                <rect key="frame" x="16" y="28" width="343" height="619"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SciCal" translatesAutoresizingMaskIntoConstraints="NO" id="QbQ-ST-nfC">
+                                        <rect key="frame" x="30" y="159" width="283" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="5FU-cZ-4Za"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="QbQ-ST-nfC" firstAttribute="leading" secondItem="die-Ys-LLA" secondAttribute="leading" constant="30" id="1g0-Ff-Z8Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="QbQ-ST-nfC" secondAttribute="trailing" constant="30" id="G28-z6-03y"/>
+                                    <constraint firstItem="QbQ-ST-nfC" firstAttribute="centerY" secondItem="die-Ys-LLA" secondAttribute="centerY" id="d0e-DV-6fM"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accuracy at your finger tips!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="K17-un-Y1Z">
+                                <rect key="frame" x="56" y="403.5" width="263" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="CYN-im-Wmm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.31764705882352939" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="die-Ys-LLA" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="DGe-ej-axz"/>
+                            <constraint firstItem="K17-un-Y1Z" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="40" id="DPS-tT-t5t"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="die-Ys-LLA" secondAttribute="bottom" constant="20" id="VXz-hS-bB7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K17-un-Y1Z" secondAttribute="trailing" constant="40" id="YIq-Ys-hmv"/>
+                            <constraint firstItem="K17-un-Y1Z" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="100" id="Zmb-BM-gWJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="die-Ys-LLA" secondAttribute="trailing" id="num-Y8-tR8"/>
+                            <constraint firstItem="die-Ys-LLA" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="pOE-7E-pBe"/>
+                            <constraint firstItem="die-Ys-LLA" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" id="qJl-eE-bsH"/>
+                            <constraint firstItem="die-Ys-LLA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="yAR-V0-f0p"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="SciCal" width="282" height="98"/>
+    </resources>
 </document>
