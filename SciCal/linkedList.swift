@@ -49,14 +49,12 @@ class LinkedList {
         
         switch latexValue {
         case "\\times":
-            print("Latix multiply")
             normalValue = " * "
         case "-":
             normalValue = " - "
         case "+":
             normalValue = " + "
         case "\\div":
-            print("Latix divide")
             normalValue = " / "
         case "(":
             normalValue = "( "

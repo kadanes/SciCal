@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var permutationRow: UIStackView!
     
-    @IBOutlet weak var cursorPositionSlider: UISlider!
+ 
     
     
     @IBAction func addToMemory(_ sender: UIButton) {
@@ -279,21 +279,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func changeCursorPosition(_ sender: Any) {
-        
-        let cursorPosition = Int(cursorPositionSlider.value)
-        
-    }
+ 
     
    
     
-    
-    func updateCursor(){
-        
-        cursorPositionSlider.maximumValue = Float(inputLinkedList.length())
-        cursorPositionSlider.setValue(Float(cursorIndex), animated: true)
-        
-    }
+   
     
     func refreshLatexString(calledFrom: Int) {
         
