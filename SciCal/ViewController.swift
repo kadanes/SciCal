@@ -95,10 +95,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         label.fontSize = 40.0
         labelCursor.fontSize = 40.0
         label.textColor = UIColor.white
-        labelCursor.textColor = UIColor.black
+        labelCursor.textColor = UIColor(red:1.00, green:0.35, blue:0.33, alpha:1.0)
         
         labelCursor.latex = "0\\fcursor"
-        
         label.latex = "0\\bcursor"
         labelLatixSize = label.intrinsicContentSize
         cursorLatixSize = labelCursor.intrinsicContentSize
@@ -463,7 +462,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         expressionScrollView.contentSize = CGSize(width: labelLatixSize.width + 5.0, height: labelLatixSize.height + 10.0 )
         
-        labelCursor.frame = CGRect(x: 5.0 , y: 5.0, width: cursorLatixSize.width + 10, height: cursorLatixSize.height)
+        labelCursor.frame = CGRect(x: 5.0 , y: 3.9, width: cursorLatixSize.width + 10, height: cursorLatixSize.height)
         
         label.frame = CGRect(x: 5.0, y: 5.0, width: labelLatixSize.width + 10, height: labelLatixSize.height)
         
