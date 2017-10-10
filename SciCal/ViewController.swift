@@ -74,14 +74,47 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //        cursorLatixSize = labelCursor.intrinsicContentSize
 //
 //        expressionScrollView = UIScrollView(frame: expressionView.bounds)
+       
+        
+        //MTMathAtomFactory.addLatexSymbol("new", value: MTMathAtomFactory.operator(withName: "new", limits: false))
+        
+        MTMathAtomFactory.addLatexSymbol("fcursor", value: MTMathAtom.init(type: MTMathAtomType.accent, value: "𝖨"))  //𝖨∣
+        MTMathAtomFactory.addLatexSymbol("bcursor", value: MTMathAtom.init(type: MTMathAtomType.accent, value: "˙"))//˙
+        
+        
         renderMathEquation()
         
-//        labelCursor.latex = "12\\wr3"
-//        label.latex = "12\\;3"
-        
         blinkCursor()
-        
     }
+    
+    
+    func renderMathEquation() {
+        
+        expressionView.isHidden = false
+        
+        label.fontSize = 40.0
+        labelCursor.fontSize = 40.0
+        label.textColor = UIColor.white
+        labelCursor.textColor = UIColor.black
+        
+        labelCursor.latex = "0\\fcursor"
+        
+        label.latex = "0\\bcursor"
+        labelLatixSize = label.intrinsicContentSize
+        cursorLatixSize = labelCursor.intrinsicContentSize
+        
+        expressionScrollView = UIScrollView(frame: expressionView.bounds)
+        
+        expressionScrollView.addSubview(labelCursor)
+        
+        expressionScrollView.addSubview(label)
+        
+        updateExpressionFrame()
+        
+        expressionView.addSubview(expressionScrollView)
+    }
+    
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -406,43 +439,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
-    func renderMathEquation() {
-    
-        //mainScreenStackView.isHidden = true
-        expressionView.isHidden = false
-        
-        label.fontSize = 40.0
-        labelCursor.fontSize = 40.0
-        label.textColor = UIColor.white
-        labelCursor.textColor = UIColor.black
-        
-        labelCursor.latex = "0\\check{\\ }"
-        label.latex = "0\\ "
-        //label.latex = "4^{1+\\ 2}"
-        //labelCursor.latex = "4^{1+\\check{\\ }2}"
-        //label.latex =  "x = \\frac{\\frac{-b \\pm \\sqrt{b^2\\ 3-\\ 4ac}}{2a}\\times5\\ 4+10}{\\frac{100}{10}}\\times10000"
-        //labelCursor.latex = "x = \\frac{\\frac{-b \\pm \\sqrt{b^2\\check{\\ }3-\\check{\\ }4ac}}{2a}\\times5\\check{\\ }4+10}{\\frac{100}{10}}\\times10000"
-        
-        labelLatixSize = label.intrinsicContentSize
-        cursorLatixSize = labelCursor.intrinsicContentSize
-        
-        expressionScrollView = UIScrollView(frame: expressionView.bounds)
-        
-        print("\nWidth:",labelLatixSize.width," Height:",labelLatixSize.width, "\n")
-        
-//        expressionScrollView.contentSize = CGSize(width: labelLatixSize.width + 5.0, height: labelLatixSize.height + 5.0 )
-        
-        expressionScrollView.addSubview(labelCursor)
-    
-        expressionScrollView.addSubview(label)
-        
-        updateExpressionFrame()
-        
-        expressionView.addSubview(expressionScrollView)
-    
-    }
-    
 
     func blinkCursor() {
         
@@ -465,11 +461,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func updateExpressionFrame() {
         
-        expressionScrollView.contentSize = CGSize(width: labelLatixSize.width + 5.0, height: labelLatixSize.height + 5.0 )
+        expressionScrollView.contentSize = CGSize(width: labelLatixSize.width + 5.0, height: labelLatixSize.height + 10.0 )
         
-        labelCursor.frame = CGRect(x: 5.0 , y: 5.0, width: cursorLatixSize.width, height: cursorLatixSize.height)
+        labelCursor.frame = CGRect(x: 5.0 , y: 5.0, width: cursorLatixSize.width + 10, height: cursorLatixSize.height)
         
-        label.frame = CGRect(x: 5.0, y: 5.0, width: labelLatixSize.width, height: labelLatixSize.height)
+        label.frame = CGRect(x: 5.0, y: 5.0, width: labelLatixSize.width + 10, height: labelLatixSize.height)
         
         
     }
@@ -629,9 +625,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         cursorIndex = 0
         inputLinkedList.empty()
        
-        labelCursor.latex = "0\\check{\\ }"
-        label.latex = "0\\ "
-
+        //labelCursor.latex = "0\\check{\\ }"
+        //label.latex = "0\\ "
+        labelCursor.latex = "0\\fcursor"
+        label.latex = "0\\bcursor"
         cursorLatixSize = labelCursor.intrinsicContentSize
         labelLatixSize = label.intrinsicContentSize
 

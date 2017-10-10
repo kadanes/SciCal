@@ -341,8 +341,10 @@ class LinkedList {
                 print(travelPointer.latexValue)
                 
                 if (travelPointer.position)  == cursorPosition {
-                    latexString += "\\ "
-                    cursorString += "\\check{\\ }"
+                    //latexString += "\\ "
+                    //cursorString += "\\check{\\ }"
+                    latexString += "\\bcursor"
+                    cursorString += "\\fcursor"
                     cursorSet = true
                 }
                 
@@ -360,8 +362,10 @@ class LinkedList {
         }
         
         if !cursorSet {
-            latexString += "\\ "
-            cursorString += "\\check{\\ }"
+            //latexString += "\\ "
+            //cursorString += "\\check{\\ }"
+            latexString += "\\bcursor"
+            cursorString += "\\fcursor"
             cursorSet = true
         }
         
